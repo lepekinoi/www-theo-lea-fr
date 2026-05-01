@@ -129,25 +129,49 @@ nav {
   opacity: 0.65;
 }
 
-/* ── Balancement doux des tiges ──────────────────────────── */
-@keyframes plant-sway {
-  0%, 100% { transform: rotate(-1deg); }
-  50%       { transform: rotate(2deg);  }
+/* ── Balancement doux des tiges (5 animations distinctes) ── */
+@keyframes sway-a {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50%       { transform: rotate(2deg);   }
+}
+
+@keyframes sway-b {
+  0%, 100% { transform: rotate(2deg);   }
+  50%       { transform: rotate(-1deg);  }
+}
+
+@keyframes sway-c {
+  0%        { transform: rotate(-0.5deg); }
+  33%       { transform: rotate(2.5deg);  }
+  66%       { transform: rotate(-1.5deg); }
+  100%      { transform: rotate(-0.5deg); }
+}
+
+@keyframes sway-d {
+  0%, 100% { transform: rotate(-2deg);   }
+  40%      { transform: rotate(3deg);    }
+  70%      { transform: rotate(-0.5deg); }
+}
+
+@keyframes sway-e {
+  0%, 100% { transform: rotate(0.5deg);  }
+  25%      { transform: rotate(2.5deg);  }
+  75%      { transform: rotate(-2.5deg); }
 }
 
 .deco-pissenlit { transform-origin: bottom center; }
 
-/* ── 10 pissenlits (style aigrettes) répartis sur les bords */
-.deco-p1  { width: 90px;  bottom: 0; left:  1%;  animation: plant-sway  6.5s  0.0s ease-in-out infinite; }
-.deco-p2  { width: 100px; bottom: 0; left:  8%;  animation: plant-sway  8.0s  1.2s ease-in-out infinite; }
-.deco-p3  { width: 80px;  bottom: 0; left: 15%;  animation: plant-sway  7.2s  0.6s ease-in-out infinite; }
-.deco-p4  { width: 95px;  bottom: 0; left: 22%;  animation: plant-sway  5.8s  2.0s ease-in-out infinite; }
-.deco-p5  { width: 75px;  bottom: 0; left: 29%;  animation: plant-sway  7.8s  0.4s ease-in-out infinite; }
-.deco-p6  { width: 80px;  bottom: 0; right: 28%; animation: plant-sway  6.8s  1.6s ease-in-out infinite; }
-.deco-p7  { width: 95px;  bottom: 0; right: 21%; animation: plant-sway  7.5s  0.9s ease-in-out infinite; }
-.deco-p8  { width: 85px;  bottom: 0; right: 14%; animation: plant-sway  6.2s  2.3s ease-in-out infinite; }
-.deco-p9  { width: 100px; bottom: 0; right:  7%; animation: plant-sway  8.5s  0.2s ease-in-out infinite; }
-.deco-p10 { width: 90px;  bottom: 0; right:  0%;  animation: plant-sway  7.0s  1.8s ease-in-out infinite; }
+/* ── 10 pissenlits répartis sur les bords ── */
+.deco-p1  { width: 90px;  bottom: 0; left:  1%;  animation: sway-a 6.5s 0.0s ease-in-out infinite; }
+.deco-p2  { width: 100px; bottom: 0; left:  8%;  animation: sway-c 8.0s 1.2s ease-in-out infinite; }
+.deco-p3  { width: 80px;  bottom: 0; left: 15%;  animation: sway-b 7.2s 0.6s ease-in-out infinite; }
+.deco-p4  { width: 95px;  bottom: 0; left: 22%;  animation: sway-e 5.8s 2.0s ease-in-out infinite; }
+.deco-p5  { width: 75px;  bottom: 0; left: 29%;  animation: sway-d 7.8s 0.4s ease-in-out infinite; }
+.deco-p6  { width: 80px;  bottom: 0; right: 28%; animation: sway-c 6.8s 1.6s ease-in-out infinite; }
+.deco-p7  { width: 95px;  bottom: 0; right: 21%; animation: sway-a 7.5s 0.9s ease-in-out infinite; }
+.deco-p8  { width: 85px;  bottom: 0; right: 14%; animation: sway-e 6.2s 2.3s ease-in-out infinite; }
+.deco-p9  { width: 100px; bottom: 0; right:  7%; animation: sway-b 8.5s 0.2s ease-in-out infinite; }
+.deco-p10 { width: 90px;  bottom: 0; right:  0%; animation: sway-d 7.0s 1.8s ease-in-out infinite; }
 
 
 /* ── Hero logos ──────────────────────────────────────────── */
@@ -203,15 +227,6 @@ nav {
 
 .hero h1 span { color: var(--orange); }
 
-.hero-subtitle {
-  font-family: var(--font-serif);
-  font-style: normal;
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--orange);
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  margin-bottom: 1.5rem;
-}
 
 .hero-desc {
   max-width: 600px;
@@ -606,24 +621,6 @@ section { padding: var(--section-pad); }
   margin-bottom: 2rem;
 }
 
-.contact-wrapper {
-  max-width: 560px;
-  margin: 0 auto;
-  background: var(--white);
-  border: 1px solid var(--sand-light);
-  border-radius: var(--radius);
-  padding: 3rem 2.5rem;
-  box-shadow: 0 4px 24px rgba(44, 95, 122, 0.08);
-}
-
-.contact-wrapper h2 {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  color: var(--blue-dark);
-  margin-bottom: 0.6rem;
-}
-
-.contact-wrapper p { color: var(--text-mid); margin-bottom: 2rem; }
 
 /* ── Contact info list ──────────────────────────────────── */
 .contact-info {
@@ -852,8 +849,6 @@ footer {
   }
 
   .timeline-dot { position: absolute; left: 0; }
-
-  .form-row { grid-template-columns: 1fr; }
 
   .about-grid { grid-template-columns: 1fr; }
 
