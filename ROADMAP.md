@@ -8,15 +8,16 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 ## ✅ Phase 0 — Fondations (terminé)
 
 - [x] Structure HTML5 sémantique
-- [x] Design CSS complet (palette bleu & sable, ambiance bois/nature)
+- [x] Design CSS complet (palette bleu & ambre/pissenlit)
 - [x] Navigation sticky responsive
-- [x] Section Hero avec CTA
+- [x] Section Hero avec CTA et pissenlits décoratifs animés (style logo)
 - [x] Section La crèche (présentation)
 - [x] Section Nos engagements
 - [x] Section Le projet (timeline / vision)
+- [x] Section Notre futur espace (galerie placeholder)
 - [x] Section Nos valeurs
-- [x] Section Contact avec coordonnées complètes
-- [x] Intégration Meeko (pré-inscription)
+- [x] Section Pré-inscription avec intégration Meeko
+- [x] Section Contact dans le footer avec coordonnées complètes
 - [x] Liens Facebook & Instagram
 - [x] Footer
 - [x] README & ROADMAP
@@ -29,10 +30,10 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 
 - [ ] **Photos réelles** — Remplacer les placeholders par des photos de la structure, du jardin, des espaces de vie
 - [ ] **Textes finaux** — Rédiger les textes définitifs pour chaque section (présentation, engagements, projet)
-- [ ] **Favicon** — Créer un favicon aux couleurs de la micro-crèche (feuille, pissenlit, initiales T&L)
+- [ ] **Favicon** — Créer un favicon aux couleurs de la micro-crèche (pissenlit, initiales T&L)
+- [ ] **Logo Meeko stable** — Héberger le logo Meeko en local pour éviter une dépendance externe
 - [ ] **Image hero** — Photo de fond chaleureuse dans la section Hero
 - [ ] **Open Graph** — Métadonnées pour le partage sur les réseaux sociaux (`og:image`, `og:description`)
-- [ ] **Logo Meeko stable** — Héberger le logo Meeko en local pour éviter une dépendance externe
 - [ ] **Horaires d'ouverture** — Afficher les horaires d'accueil de la micro-crèche
 - [ ] **Capacité d'accueil** — Nombre de places disponibles et tranches d'âge
 
@@ -44,8 +45,9 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 
 - [ ] **Section Équipe** — Présentation des professionnelles (Théo, Léa, et l'équipe)
 - [ ] **Galerie photos** — Photos des espaces, activités, sorties nature (avec consentement)
-- [ ] **Menu hamburger mobile** — Navigation responsive sur mobile
-- [ ] **Animation d'entrée** — Apparition douce des sections au scroll (`Intersection Observer`)
+- [ ] **Menu hamburger mobile** — Navigation responsive sur mobile (afficher les liens nav sur petit écran)
+- [ ] **Animations d'entrée** — Apparition douce des sections au scroll (`Intersection Observer`)
+- [ ] **Graines de pissenlit volantes** — Animation CSS des graines s'envolant en particules (keyframes drift)
 - [ ] **Blog / Carnet de bord** — Actualités de la crèche, sorties, projets pédagogiques
 - [ ] **Carte interactive** — Localisation de la crèche (Leaflet.js ou Google Maps embed)
 - [ ] **Mode sombre** — Variante nocturne aux tons bois sombres et bleu nuit
@@ -106,4 +108,4 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 
 ---
 
-*Dernière mise à jour : Mai 2026*
+*Dernière mise à jour : Mai 2026 — pissenlit logo, animations variées, nettoyage CSS*

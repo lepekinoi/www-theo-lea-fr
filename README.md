@@ -58,12 +58,14 @@ www-theo-lea-fr/
 | Section | ID | Description |
 |---------|----|-------------|
 | Navigation | `nav` | Sticky, bleu foncé, liens de section |
-| Hero | `#home` | Accroche principale, boutons CTA |
+| Hero | `#home` | Accroche principale, pissenlit logo animés, boutons CTA |
 | La crèche | `#creche` | Présentation de la micro-crèche |
 | Nos engagements | `#engagements` | Valeurs éducatives et pédagogiques |
 | Le projet | `#projet` | Histoire et vision du projet |
+| Notre futur espace | `#espace` | Galerie placeholder des espaces |
 | Nos valeurs | `#valeurs` | Piliers de la micro-crèche |
-| Nous rejoindre | `#contact` | Coordonnées, réseaux sociaux & pré-inscription Meeko |
+| Pré-inscription | `#inscription` | Lien Meeko pour la pré-inscription |
+| Nous contacter | `#contact` | Coordonnées & réseaux sociaux (dans le footer) |
 | Footer | — | Liens, copyright |
 
 ---
