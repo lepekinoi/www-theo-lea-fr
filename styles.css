@@ -158,29 +158,29 @@ nav {
 }
 
 .deco-seed {
-  width: 16px;
-  opacity: 0.55;
+  width: 24px;
+  opacity: 0.75;
   animation-timing-function: ease-in-out;
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
 
 /* 15 graines dispersées dans tout le header */
-.deco-s1  { top:  5%; left:  3%;  width: 11px; animation: seed-drift-1  8.0s  0.0s ease-in-out infinite alternate; }
-.deco-s2  { top: 12%; left: 17%;  width: 14px; animation: seed-drift-2 10.0s  1.5s ease-in-out infinite alternate; }
-.deco-s3  { top:  7%; left: 32%;  width: 10px; animation: seed-drift-3  7.0s  0.5s ease-in-out infinite alternate; }
-.deco-s4  { top:  4%; left: 50%;  width: 13px; animation: seed-drift-4  9.0s  2.0s ease-in-out infinite alternate; }
-.deco-s5  { top: 10%; left: 66%;  width: 11px; animation: seed-drift-5 11.0s  1.0s ease-in-out infinite alternate; }
-.deco-s6  { top:  6%; left: 82%;  width: 15px; animation: seed-drift-2  8.5s  3.0s ease-in-out infinite alternate; }
-.deco-s7  { top: 20%; right: 4%;  width: 10px; animation: seed-drift-1  9.5s  0.8s ease-in-out infinite alternate; }
-.deco-s8  { top: 28%; left:  5%;  width: 13px; animation: seed-drift-3 12.0s  2.5s ease-in-out infinite alternate; }
-.deco-s9  { top: 32%; left: 24%;  width: 10px; animation: seed-drift-5  9.0s  4.0s ease-in-out infinite alternate; }
-.deco-s10 { top: 22%; left: 46%;  width: 14px; animation: seed-drift-4  7.5s  1.2s ease-in-out infinite alternate; }
-.deco-s11 { top: 38%; left: 71%;  width: 11px; animation: seed-drift-1 11.0s  0.3s ease-in-out infinite alternate; }
-.deco-s12 { top: 45%; right: 6%;  width: 13px; animation: seed-drift-3  8.0s  3.5s ease-in-out infinite alternate; }
-.deco-s13 { top: 55%; left: 12%;  width: 10px; animation: seed-drift-2 10.5s  2.0s ease-in-out infinite alternate; }
-.deco-s14 { top: 48%; left: 57%;  width: 14px; animation: seed-drift-5  9.0s  4.5s ease-in-out infinite alternate; }
-.deco-s15 { top: 60%; left: 38%;  width: 11px; animation: seed-drift-4  8.5s  1.8s ease-in-out infinite alternate; }
+.deco-s1  { top:  5%; left:  3%;  width: 22px; animation: seed-drift-1  8.0s  0.0s ease-in-out infinite alternate; }
+.deco-s2  { top: 12%; left: 17%;  width: 28px; animation: seed-drift-2 10.0s  1.5s ease-in-out infinite alternate; }
+.deco-s3  { top:  7%; left: 32%;  width: 20px; animation: seed-drift-3  7.0s  0.5s ease-in-out infinite alternate; }
+.deco-s4  { top:  4%; left: 50%;  width: 26px; animation: seed-drift-4  9.0s  2.0s ease-in-out infinite alternate; }
+.deco-s5  { top: 10%; left: 66%;  width: 22px; animation: seed-drift-5 11.0s  1.0s ease-in-out infinite alternate; }
+.deco-s6  { top:  6%; left: 82%;  width: 30px; animation: seed-drift-2  8.5s  3.0s ease-in-out infinite alternate; }
+.deco-s7  { top: 20%; right: 4%;  width: 20px; animation: seed-drift-1  9.5s  0.8s ease-in-out infinite alternate; }
+.deco-s8  { top: 28%; left:  5%;  width: 26px; animation: seed-drift-3 12.0s  2.5s ease-in-out infinite alternate; }
+.deco-s9  { top: 32%; left: 24%;  width: 20px; animation: seed-drift-5  9.0s  4.0s ease-in-out infinite alternate; }
+.deco-s10 { top: 22%; left: 46%;  width: 28px; animation: seed-drift-4  7.5s  1.2s ease-in-out infinite alternate; }
+.deco-s11 { top: 38%; left: 71%;  width: 22px; animation: seed-drift-1 11.0s  0.3s ease-in-out infinite alternate; }
+.deco-s12 { top: 45%; right: 6%;  width: 26px; animation: seed-drift-3  8.0s  3.5s ease-in-out infinite alternate; }
+.deco-s13 { top: 55%; left: 12%;  width: 20px; animation: seed-drift-2 10.5s  2.0s ease-in-out infinite alternate; }
+.deco-s14 { top: 48%; left: 57%;  width: 28px; animation: seed-drift-5  9.0s  4.5s ease-in-out infinite alternate; }
+.deco-s15 { top: 60%; left: 38%;  width: 22px; animation: seed-drift-4  8.5s  1.8s ease-in-out infinite alternate; }
 
 /* ── Hero logos ──────────────────────────────────────────── */
 .hero-logo-img {
