@@ -159,7 +159,7 @@ nav {
   75%      { transform: rotate(-2.5deg); }
 }
 
-.deco-pissenlit { transform-origin: bottom center; overflow: visible; }
+.deco-pissenlit { transform-origin: bottom center; }
 
 /* ── 10 pissenlits répartis sur les bords ── */
 .deco-p1  { width: 90px;  bottom: 0; left:  1%;  animation: sway-a 6.5s 0.0s ease-in-out infinite; }
