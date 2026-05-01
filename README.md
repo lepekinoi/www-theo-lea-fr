@@ -1,12 +1,23 @@
 # 🌿 Théo & Léa — www.theo-lea.fr
 
-Site personnel statique aux couleurs bois & nature, pour Théo et Léa.
+Site officiel de la micro-crèche **Théo & Léa**, à Notre-Dame-des-Landes (44130). Ouverture prévue en janvier 2027.
 
 ---
 
 ## ✨ Présentation
 
-Un espace web chaleureux, ancré dans l'univers du bois et de la nature, qui raconte notre histoire, nos passions et nos valeurs. L'ambiance est douce, organique et authentique.
+Un espace web chaleureux, ancré dans l'univers du bois et de la nature, dédié à la micro-crèche Théo & Léa. Un lieu doux, rassurant et bienveillant pour les tout-petits et leurs familles.
+
+### 📍 Informations de contact
+
+| | |
+|---|---|
+| **Adresse** | 16 impasse de la pie bavarde, 44130 Notre-Dame-des-Landes |
+| **Téléphone** | [06 30 69 32 43](tel:+33630693243) |
+| **E-mail** | [contact@theo-lea.fr](mailto:contact@theo-lea.fr) |
+| **Facebook** | [Théo & Léa Micro-crèche](https://www.facebook.com/profile.php?id=61588872606051) |
+| **Instagram** | [@microcreche.theoetlea.nddl](https://www.instagram.com/microcreche.theoetlea.nddl/) |
+| **Pré-inscription** | [via Meeko](https://theo-lea.meeko.site/iframe/registration/one) |
 
 ---
 
@@ -48,11 +59,11 @@ www-theo-lea-fr/
 |---------|----|-------------|
 | Navigation | `nav` | Sticky, bleu foncé, liens de section |
 | Hero | `#home` | Accroche principale, boutons CTA |
-| À propos | `#about` | 6 cartes thématiques (forêt, bois, eau…) |
-| Notre histoire | `#story` | Timeline interactive |
-| Galerie | `#gallery` | Grille de photos (placeholders) |
-| Nos valeurs | `#values` | 4 cartes sur fond bleu |
-| Contact | `#contact` | Formulaire complet |
+| La crèche | `#creche` | Présentation de la micro-crèche |
+| Nos engagements | `#engagements` | Valeurs éducatives et pédagogiques |
+| Le projet | `#projet` | Histoire et vision du projet |
+| Nos valeurs | `#valeurs` | Piliers de la micro-crèche |
+| Nous rejoindre | `#contact` | Coordonnées, réseaux sociaux & pré-inscription Meeko |
 | Footer | — | Liens, copyright |
 
 ---
