@@ -1,27 +1,31 @@
 /* ============================================================
-   Théo & Léa — Palette bois & nature
-   Couleurs : bleu doux + sable chaud
+   Théo & Léa — Micro-crèche
+   Couleurs : teal doux + ambre chaud (pissenlit)
    ============================================================ */
 
 /* ── Variables ───────────────────────────────────────────── */
 :root {
-  /* Bleus */
+  /* Bleus / teal */
   --blue-dark:   #2C5F7A;
   --blue-mid:    #4A8FA8;
   --blue-light:  #A8CBDA;
   --blue-pale:   #D9ECF4;
 
-  /* Sable / bois */
-  --sand-dark:   #8B6B45;
-  --sand-mid:    #C4986A;
-  --sand-light:  #E8D5B7;
+  /* Ambre / pissenlit (couleur logo) */
+  --orange:      #D4883A;
+  --orange-mid:  #C4986A;
+  --orange-light:#F0C88A;
+  --orange-pale: #FDF3E7;
+
+  /* Crème / fond */
+  --sand-light:  #EDE4D4;
   --sand-pale:   #F7F0E6;
 
   /* Neutres */
   --white:       #FDFAF6;
-  --text-dark:   #2E2A25;
-  --text-mid:    #5A4E42;
-  --text-light:  #8A7C6E;
+  --text-dark:   #2E3A45;
+  --text-mid:    #4A5F6A;
+  --text-light:  #8A9FAA;
 
   /* Typographie */
   --font-serif:  'Playfair Display', Georgia, serif;
@@ -57,18 +61,23 @@ nav {
   z-index: 100;
   background: rgba(44, 95, 122, 0.95);
   backdrop-filter: blur(6px);
-  padding: 0.8rem 2rem;
+  padding: 0.6rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 12px rgba(44, 95, 122, 0.3);
 }
 
-.nav-logo {
-  font-family: var(--font-serif);
-  font-size: 1.4rem;
-  color: var(--sand-light);
-  letter-spacing: 0.06em;
+.nav-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.nav-logo-img {
+  height: 48px;
+  width: auto;
+  filter: brightness(0) invert(1);
 }
 
 .nav-links {
@@ -86,7 +95,7 @@ nav {
   transition: color 0.2s;
 }
 
-.nav-links a:hover { color: var(--sand-mid); text-decoration: none; }
+.nav-links a:hover { color: var(--orange-light); text-decoration: none; }
 
 /* ── Hero ────────────────────────────────────────────────── */
 .hero {
@@ -99,48 +108,49 @@ nav {
   padding: 4rem 2rem;
   position: relative;
   overflow: hidden;
-
-  /* Dégradé bois & nature */
-  background:
-    linear-gradient(160deg, rgba(74, 143, 168, 0.15) 0%, transparent 50%),
-    linear-gradient(to bottom, var(--sand-pale) 0%, var(--sand-light) 100%);
+  background: linear-gradient(160deg, rgba(74, 143, 168, 0.08) 0%, transparent 50%),
+              linear-gradient(to bottom, var(--sand-pale) 0%, var(--orange-pale) 100%);
 }
 
-/* Grain de bois décoratif */
-.hero::before {
-  content: '';
+/* ── Pissenlits décoratifs ───────────────────────────────── */
+.hero-dandelions {
   position: absolute;
   inset: 0;
-  background-image:
-    repeating-linear-gradient(
-      92deg,
-      rgba(139, 107, 69, 0.04) 0px,
-      rgba(139, 107, 69, 0.04) 1px,
-      transparent 1px,
-      transparent 60px
-    ),
-    repeating-linear-gradient(
-      178deg,
-      rgba(196, 152, 106, 0.03) 0px,
-      rgba(196, 152, 106, 0.03) 1px,
-      transparent 1px,
-      transparent 80px
-    );
   pointer-events: none;
+  overflow: hidden;
 }
+
+.deco-pissenlit,
+.deco-seed {
+  position: absolute;
+  color: var(--orange);
+  opacity: 0.35;
+}
+
+.deco-p1 { width: 44px; bottom: 0; left: 6%; }
+.deco-p2 { width: 36px; bottom: 0; left: 18%; }
+.deco-p3 { width: 50px; bottom: 0; right: 10%; }
+.deco-p4 { width: 30px; bottom: 0; right: 24%; }
+
+.deco-seed { width: 14px; opacity: 0.25; }
+.deco-s1 { top: 18%; left: 8%; transform: rotate(-15deg); }
+.deco-s2 { top: 28%; right: 12%; transform: rotate(20deg); }
+.deco-s3 { top: 12%; left: 35%; transform: rotate(-8deg); }
+.deco-s4 { top: 40%; right: 28%; transform: rotate(35deg); }
+.deco-s5 { top: 22%; left: 55%; transform: rotate(-25deg); }
 
 .hero-badge {
   display: inline-block;
-  background: var(--blue-pale);
-  color: var(--blue-dark);
+  background: var(--orange-pale);
+  color: var(--orange);
   font-size: 0.78rem;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  padding: 0.4rem 1.1rem;
+  padding: 0.4rem 1.2rem;
   border-radius: 2rem;
   margin-bottom: 1.5rem;
-  border: 1px solid var(--blue-light);
+  border: 1px solid var(--orange-light);
 }
 
 .hero h1 {
@@ -151,13 +161,15 @@ nav {
   margin-bottom: 0.6rem;
 }
 
-.hero h1 span { color: var(--sand-dark); }
+.hero h1 span { color: var(--orange); }
 
 .hero-subtitle {
   font-family: var(--font-serif);
-  font-style: italic;
+  font-style: normal;
   font-size: clamp(1rem, 2.5vw, 1.4rem);
-  color: var(--text-mid);
+  color: var(--orange);
+  font-weight: 700;
+  letter-spacing: 0.06em;
   margin-bottom: 1.5rem;
 }
 
@@ -196,14 +208,44 @@ nav {
 
 .btn-secondary {
   background: transparent;
-  color: var(--sand-dark);
-  border: 2px solid var(--sand-mid);
+  color: var(--orange);
+  border: 2px solid var(--orange);
   margin-left: 1rem;
 }
 
 .btn-secondary:hover {
-  background: var(--sand-light);
-  color: var(--sand-dark);
+  background: var(--orange-pale);
+  color: var(--orange);
+}
+
+/* ── Opening badge ───────────────────────────────────────── */
+.opening-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: var(--white);
+  border: 1px solid var(--sand-light);
+  border-radius: 2rem;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  margin: 1.4rem 0;
+  box-shadow: 0 2px 8px rgba(44, 95, 122, 0.07);
+}
+
+.opening-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--orange);
+  flex-shrink: 0;
+}
+
+.soon-text {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-top: 0.2rem;
 }
 
 .hero-scroll {
@@ -240,7 +282,7 @@ section { padding: var(--section-pad); }
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--sand-dark);
+  color: var(--orange);
   margin-bottom: 0.6rem;
 }
 
@@ -262,6 +304,52 @@ section { padding: var(--section-pad); }
   background: var(--white);
   border-top: 1px solid var(--sand-light);
   border-bottom: 1px solid var(--sand-light);
+}
+
+/* ── Crèche (cocon de douceur) ───────────────────────────── */
+.creche {
+  background: var(--white);
+}
+
+.creche-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.creche-text .section-tag {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.creche-text h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  color: var(--blue-dark);
+  line-height: 1.25;
+  margin-bottom: 1.2rem;
+}
+
+.creche-text p {
+  color: var(--text-mid);
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.creche-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.enfants-img {
+  max-width: 320px;
+  width: 100%;
+  opacity: 0.85;
+  filter: drop-shadow(0 8px 24px rgba(44, 95, 122, 0.12));
 }
 
 .about-grid {
@@ -320,7 +408,7 @@ section { padding: var(--section-pad); }
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--blue-light), var(--sand-mid));
+  background: linear-gradient(to bottom, var(--blue-light), var(--orange-light));
   transform: translateX(-50%);
 }
 
@@ -365,7 +453,7 @@ section { padding: var(--section-pad); }
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--sand-dark);
+  color: var(--orange);
   margin-bottom: 0.3rem;
 }
 
@@ -401,7 +489,7 @@ section { padding: var(--section-pad); }
   gap: 0.6rem;
   color: var(--text-light);
   font-size: 0.85rem;
-  border: 2px dashed var(--sand-mid);
+  border: 2px dashed var(--orange-mid);
   transition: border-color 0.2s, background 0.2s;
   cursor: pointer;
 }
@@ -421,7 +509,7 @@ section { padding: var(--section-pad); }
   color: var(--white);
 }
 
-.values .section-tag { color: var(--sand-mid); }
+.values .section-tag { color: var(--orange-light); }
 .values .section-header h2 { color: var(--white); }
 .values .section-header p { color: var(--blue-pale); }
 
@@ -520,11 +608,12 @@ footer {
   padding: 2.5rem 2rem;
 }
 
-footer .footer-logo {
-  font-family: var(--font-serif);
-  font-size: 1.6rem;
-  color: var(--sand-light);
-  margin-bottom: 0.6rem;
+.footer-logo-img {
+  height: 60px;
+  width: auto;
+  margin: 0 auto 0.8rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
 }
 
 footer p { font-size: 0.85rem; opacity: 0.8; margin-bottom: 0.3rem; }
@@ -545,13 +634,18 @@ footer .footer-links a {
   transition: color 0.2s;
 }
 
-footer .footer-links a:hover { color: var(--sand-mid); text-decoration: none; }
+footer .footer-links a:hover { color: var(--orange-light); text-decoration: none; }
 
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
 
   .btn-secondary { margin-left: 0; margin-top: 0.8rem; }
+
+  .creche-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+  .creche-visual { order: -1; }
+  .enfants-img { max-width: 200px; }
+  .opening-badge { justify-content: center; }
 
   .timeline::before { left: 24px; }
 
