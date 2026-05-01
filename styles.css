@@ -130,57 +130,72 @@ nav {
   opacity: 0.65;
 }
 
-.deco-p1 { width: 44px; bottom: 0; left: 6%; }
-.deco-p2 { width: 36px; bottom: 0; left: 18%; }
-.deco-p3 { width: 50px; bottom: 0; right: 10%; }
-.deco-p4 { width: 30px; bottom: 0; right: 24%; }
+/* ── Balancement doux des tiges ──────────────────────────── */
+@keyframes plant-sway {
+  0%, 100% { transform: rotate(-1deg); }
+  50%       { transform: rotate(2deg);  }
+}
 
-/* ── Graines animées ─────────────────────────────────────── */
-@keyframes seed-drift-1 {
-  0%   { transform: translate(0px, 0px)   rotate(-12deg); }
-  100% { transform: translate(14px, -20px) rotate(-1deg);  }
+.deco-pissenlit { transform-origin: bottom center; }
+
+.deco-p1 { width: 44px; bottom: 0; left: 6%;   animation: plant-sway  6.5s  0.0s ease-in-out infinite; }
+.deco-p2 { width: 48px; bottom: 0; left: 18%;  animation: plant-sway  8.0s  1.2s ease-in-out infinite; }
+.deco-p3 { width: 50px; bottom: 0; right: 10%; animation: plant-sway  7.2s  0.6s ease-in-out infinite; }
+.deco-p4 { width: 30px; bottom: 0; right: 24%; animation: plant-sway  5.8s  2.0s ease-in-out infinite; }
+
+/* ── Graines animées (boucle continue 0%=100% pour fluidité) */
+@keyframes seed-float-1 {
+  0%   { transform: translate(  0px,   0px) rotate(-10deg); }
+  30%  { transform: translate( 12px, -14px) rotate( -2deg); }
+  65%  { transform: translate(  6px,  -7px) rotate(-16deg); }
+  100% { transform: translate(  0px,   0px) rotate(-10deg); }
 }
-@keyframes seed-drift-2 {
-  0%   { transform: translate(0px, 0px)   rotate(18deg);  }
-  100% { transform: translate(-12px, -18px) rotate(28deg); }
+@keyframes seed-float-2 {
+  0%   { transform: translate(  0px,   0px) rotate( 14deg); }
+  35%  { transform: translate(-10px, -16px) rotate( 24deg); }
+  70%  { transform: translate( -3px,  -8px) rotate(  8deg); }
+  100% { transform: translate(  0px,   0px) rotate( 14deg); }
 }
-@keyframes seed-drift-3 {
-  0%   { transform: translate(0px, 0px)   rotate(-8deg);  }
-  100% { transform: translate(20px, -14px) rotate(6deg);   }
+@keyframes seed-float-3 {
+  0%   { transform: translate(  0px,   0px) rotate( -5deg); }
+  40%  { transform: translate( 16px, -12px) rotate(  8deg); }
+  75%  { transform: translate(  7px, -20px) rotate( -2deg); }
+  100% { transform: translate(  0px,   0px) rotate( -5deg); }
 }
-@keyframes seed-drift-4 {
-  0%   { transform: translate(0px, 0px)   rotate(30deg);  }
-  100% { transform: translate(-16px, -22px) rotate(16deg); }
+@keyframes seed-float-4 {
+  0%   { transform: translate(  0px,   0px) rotate( 26deg); }
+  30%  { transform: translate(-14px, -10px) rotate( 14deg); }
+  70%  { transform: translate( -5px, -18px) rotate( 34deg); }
+  100% { transform: translate(  0px,   0px) rotate( 26deg); }
 }
-@keyframes seed-drift-5 {
-  0%   { transform: translate(0px, 0px)   rotate(-22deg); }
-  100% { transform: translate(10px, -26px) rotate(-10deg); }
+@keyframes seed-float-5 {
+  0%   { transform: translate(  0px,   0px) rotate(-20deg); }
+  45%  { transform: translate( 10px, -22px) rotate( -8deg); }
+  80%  { transform: translate( 16px, -10px) rotate(-26deg); }
+  100% { transform: translate(  0px,   0px) rotate(-20deg); }
 }
 
 .deco-seed {
   width: 24px;
   opacity: 0.75;
-  animation-timing-function: ease-in-out;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
 }
 
-/* 15 graines dispersées dans tout le header */
-.deco-s1  { top:  5%; left:  3%;  width: 22px; animation: seed-drift-1  8.0s  0.0s ease-in-out infinite alternate; }
-.deco-s2  { top: 12%; left: 17%;  width: 28px; animation: seed-drift-2 10.0s  1.5s ease-in-out infinite alternate; }
-.deco-s3  { top:  7%; left: 32%;  width: 20px; animation: seed-drift-3  7.0s  0.5s ease-in-out infinite alternate; }
-.deco-s4  { top:  4%; left: 50%;  width: 26px; animation: seed-drift-4  9.0s  2.0s ease-in-out infinite alternate; }
-.deco-s5  { top: 10%; left: 66%;  width: 22px; animation: seed-drift-5 11.0s  1.0s ease-in-out infinite alternate; }
-.deco-s6  { top:  6%; left: 82%;  width: 30px; animation: seed-drift-2  8.5s  3.0s ease-in-out infinite alternate; }
-.deco-s7  { top: 20%; right: 4%;  width: 20px; animation: seed-drift-1  9.5s  0.8s ease-in-out infinite alternate; }
-.deco-s8  { top: 28%; left:  5%;  width: 26px; animation: seed-drift-3 12.0s  2.5s ease-in-out infinite alternate; }
-.deco-s9  { top: 32%; left: 24%;  width: 20px; animation: seed-drift-5  9.0s  4.0s ease-in-out infinite alternate; }
-.deco-s10 { top: 22%; left: 46%;  width: 28px; animation: seed-drift-4  7.5s  1.2s ease-in-out infinite alternate; }
-.deco-s11 { top: 38%; left: 71%;  width: 22px; animation: seed-drift-1 11.0s  0.3s ease-in-out infinite alternate; }
-.deco-s12 { top: 45%; right: 6%;  width: 26px; animation: seed-drift-3  8.0s  3.5s ease-in-out infinite alternate; }
-.deco-s13 { top: 55%; left: 12%;  width: 20px; animation: seed-drift-2 10.5s  2.0s ease-in-out infinite alternate; }
-.deco-s14 { top: 48%; left: 57%;  width: 28px; animation: seed-drift-5  9.0s  4.5s ease-in-out infinite alternate; }
-.deco-s15 { top: 60%; left: 38%;  width: 22px; animation: seed-drift-4  8.5s  1.8s ease-in-out infinite alternate; }
+/* 15 graines sur les bords — sans chevauchement du contenu central */
+.deco-s1  { top:  8%; left:  4%;  width: 22px; animation: seed-float-1 14.0s  0.0s ease-in-out infinite; }
+.deco-s2  { top:  5%; left: 22%;  width: 26px; animation: seed-float-2 16.0s  1.5s ease-in-out infinite; }
+.deco-s3  { top: 10%; left: 46%;  width: 20px; animation: seed-float-3 13.0s  0.5s ease-in-out infinite; }
+.deco-s4  { top:  5%; left: 68%;  width: 28px; animation: seed-float-4 17.0s  2.0s ease-in-out infinite; }
+.deco-s5  { top: 10%; left: 87%;  width: 22px; animation: seed-float-5 15.0s  1.0s ease-in-out infinite; }
+.deco-s6  { top:  7%; right:  4%; width: 28px; animation: seed-float-2 14.5s  3.0s ease-in-out infinite; }
+.deco-s7  { top: 24%; right:  4%; width: 20px; animation: seed-float-1 16.5s  0.8s ease-in-out infinite; }
+.deco-s8  { top: 36%; left:   4%; width: 26px; animation: seed-float-3 18.0s  2.5s ease-in-out infinite; }
+.deco-s9  { top: 52%; left:   5%; width: 20px; animation: seed-float-5 15.0s  4.0s ease-in-out infinite; }
+.deco-s10 { top: 40%; right:  4%; width: 24px; animation: seed-float-4 13.5s  1.2s ease-in-out infinite; }
+.deco-s11 { top: 56%; right:  5%; width: 20px; animation: seed-float-1 17.0s  0.3s ease-in-out infinite; }
+.deco-s12 { top: 72%; right:  4%; width: 24px; animation: seed-float-3 14.0s  3.5s ease-in-out infinite; }
+.deco-s13 { top: 68%; left:   4%; width: 20px; animation: seed-float-2 16.5s  2.0s ease-in-out infinite; }
+.deco-s14 { top: 88%; left:   5%; width: 26px; animation: seed-float-5 15.0s  4.5s ease-in-out infinite; }
+.deco-s15 { top: 90%; right:  5%; width: 22px; animation: seed-float-4 14.5s  1.8s ease-in-out infinite; }
 
 /* ── Hero logos ──────────────────────────────────────────── */
 .hero-logo-img {
