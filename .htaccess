@@ -1,0 +1,17 @@
+# ── Théo & Léa — Configuration Apache ────────────────────────────────────────
+# Ensure .xml files are served as-is with the correct MIME type.
+# This prevents URL-rewrite rules (e.g. SPA / 404 fallback) from
+# intercepting feed.xml and serving index.html instead.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  # Do not rewrite requests targeting .xml files
+  RewriteRule \.xml$ - [L]
+</IfModule>
+
+# Force correct Content-Type for XML / RSS
+<IfModule mod_headers.c>
+  <FilesMatch "\.xml$">
+    Header set Content-Type "application/xml; charset=UTF-8"
+  </FilesMatch>
+</IfModule>
