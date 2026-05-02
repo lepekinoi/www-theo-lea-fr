@@ -16,8 +16,7 @@
 
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Flux RSS — actualités de la micro-crèche -->
-  <link rel="alternate" type="application/rss+xml" title="Théo &amp; Léa — Actualités" href="feed.xml" />
+
 </head>
 <body>
 
@@ -634,18 +633,16 @@
       <!-- Plan d'accès OpenStreetMap -->
       <div class="contact-map">
         <div class="contact-map-card">
-          <iframe
-            title="Plan d'accès — Micro-crèche Théo &amp; Léa"
-            src="https://www.openstreetmap.org/export/embed.html?bbox=-1.7261006%2C47.3671554%2C-1.6901006%2C47.3931554&amp;layer=mapnik&amp;marker=47.3801554%2C-1.7081006"
-            loading="lazy"
-            allowfullscreen
-            aria-label="OpenStreetMap — 16 impasse de la pie bavarde, 44130 Notre-Dame-des-Landes"
-          ></iframe>
+          <div class="contact-map-iframe-wrap">
+            <iframe
+              title="Plan d'accès — Micro-crèche Théo &amp; Léa"
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-1.7261006%2C47.3671554%2C-1.6901006%2C47.3931554&amp;layer=mapnik&amp;marker=47.3801554%2C-1.7081006"
+              loading="lazy"
+              allowfullscreen
+              aria-label="OpenStreetMap — 16 impasse de la pie bavarde, 44130 Notre-Dame-des-Landes"
+            ></iframe>
+          </div>
           <div class="contact-map-footer">
-            <span class="contact-map-address">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-              16 impasse de la pie bavarde, 44130 Notre-Dame-des-Landes
-            </span>
             <a href="https://maps.app.goo.gl/wj4LN1q17Dayy9ZQ6" target="_blank" rel="noopener noreferrer" class="contact-map-btn">
               <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="3,11 22,2 13,21 11,13"/></svg>
               Itinéraire
@@ -662,14 +659,6 @@
       </a>
       <p>Un lieu de vie doux et naturel pour les tout-petits &mdash; fait avec 🌼 et beaucoup d'amour.</p>
       <p>© <span id="year"></span> Théo &amp; Léa Micro-crèche — Tous droits réservés</p>
-      <a href="feed.xml" class="rss-link" aria-label="Flux RSS — Actualités de la micro-crèche">
-        <svg class="rss-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <circle cx="6.5" cy="17.5" r="2.5"/>
-          <path d="M4 4a1 1 0 0 1 0 2C10.627 6 16 11.373 16 18a1 1 0 0 1-2 0C14 12.477 9.523 8 4 8a1 1 0 0 1 0-2z"/>
-          <path d="M4 10a1 1 0 0 1 0 2c3.314 0 6 2.686 6 6a1 1 0 0 1-2 0c0-2.21-1.79-4-4-4a1 1 0 0 1 0-2z"/>
-        </svg>
-        RSS
-      </a>
     </div>
   </footer>
 

@@ -47,6 +47,7 @@ Un espace web chaleureux, ancré dans l'univers du bois et de la nature, dédié
 www-theo-lea-fr/
 ├── index.html      ← Page principale (HTML5 sémantique)
 ├── styles.css      ← Feuille de style (variables CSS, responsive)
+├── assets/         ← Images, logo
 ├── README.md       ← Ce fichier
 └── ROADMAP.md      ← Feuille de route du projet
 ```

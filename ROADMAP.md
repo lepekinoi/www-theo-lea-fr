@@ -18,6 +18,7 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 - [x] Section Nos valeurs
 - [x] Section Pré-inscription avec intégration Meeko
 - [x] Section Contact dans le footer avec coordonnées complètes
+- [x] Plan d'accès OpenStreetMap (iframe sans attribution visible)
 - [x] Liens Facebook & Instagram
 - [x] Footer
 - [x] README & ROADMAP
@@ -48,8 +49,8 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 - [ ] **Menu hamburger mobile** — Navigation responsive sur mobile (afficher les liens nav sur petit écran)
 - [ ] **Animations d'entrée** — Apparition douce des sections au scroll (`Intersection Observer`)
 - [ ] **Graines de pissenlit volantes** — Animation CSS des graines s'envolant en particules (keyframes drift)
-- [ ] **Blog / Carnet de bord** — Actualités de la crèche, sorties, projets pédagogiques
-- [ ] **Carte interactive** — Localisation de la crèche (Leaflet.js ou Google Maps embed)
+- [ ] **Blog / Carnet de bord** — Actualités de la crèche, sorties, projets pédagogiques (flux RSS à intégrer ultérieurement)
+- [ ] **Carte interactive** — Localisation de la crèche ✅ (plan OSM en place)
 - [ ] **Mode sombre** — Variante nocturne aux tons bois sombres et bleu nuit
 - [ ] **FAQ** — Réponses aux questions fréquentes des familles (tarifs, CAF, horaires, etc.)
 
@@ -108,4 +109,4 @@ Les priorités sont organisées par phases, de la V1 (mise en ligne) à des évo
 
 ---
 
-*Dernière mise à jour : Mai 2026 — pissenlit logo, animations variées, nettoyage CSS*
+*Dernière mise à jour : Mai 2026 — suppression du flux RSS (à refaire), adresse dédoublée dans la carte, nettoyage du code*
