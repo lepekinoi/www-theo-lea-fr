@@ -842,6 +842,23 @@ footer {
 }
 .contact-map-link:hover { opacity: 1; color: var(--white); }
 
+/* ── RSS link (footer) ───────────────────────────────────── */
+.rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: var(--orange-light);
+  text-decoration: none;
+  opacity: 0.7;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.rss-link:hover { opacity: 1; }
+.rss-icon { width: 14px; height: 14px; flex-shrink: 0; }
+
 /* ── Responsive ──────────────────────────────────────────── */
 @media (max-width: 768px) {
   .nav-links { display: none; }
