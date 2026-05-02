@@ -15,6 +15,9 @@
   />
 
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Flux RSS — actualités de la micro-crèche -->
+  <link rel="alternate" type="application/rss+xml" title="Théo &amp; Léa — Actualités" href="/feed.xml" />
 </head>
 <body>
 
@@ -602,7 +605,9 @@
         <ul class="contact-info">
           <li>
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
-            <span>16 impasse de la pie bavarde<br/>44130 Notre-Dame-des-Landes</span>
+            <a href="https://www.openstreetmap.org/search?query=16+impasse+de+la+pie+bavarde%2C+44130+Notre-Dame-des-Landes" target="_blank" rel="noopener noreferrer" class="contact-address-link">
+              16 impasse de la pie bavarde<br/>44130 Notre-Dame-des-Landes
+            </a>
           </li>
           <li>
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 8.76a16 16 0 0 0 6.16 6.16l.95-.94a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -625,21 +630,35 @@
           </a>
         </div>
       </div>
+
+      <!-- Carte OpenStreetMap -->
+      <div class="contact-map">
+        <iframe
+          title="Localisation de la micro-crèche Théo &amp; Léa"
+          src="https://www.openstreetmap.org/export/embed.html?bbox=-1.7600%2C47.3620%2C-1.7200%2C47.3880&amp;layer=mapnik&amp;marker=47.3750%2C-1.7400"
+          loading="lazy"
+          allowfullscreen
+          aria-label="Carte OpenStreetMap — 16 impasse de la pie bavarde, 44130 Notre-Dame-des-Landes"
+        ></iframe>
+        <a href="https://www.openstreetmap.org/?mlat=47.3750&amp;mlon=-1.7400#map=15/47.3750/-1.7400" target="_blank" rel="noopener noreferrer" class="contact-map-link">Voir en grand sur OpenStreetMap</a>
+      </div>
     </div>
 
     <!-- Bas du footer -->
     <div class="footer-bottom">
-      <img src="assets/logo.png" alt="Théo &amp; Léa Micro-crèche" class="footer-logo-img" />
+      <a href="#home" class="footer-logo-link" aria-label="Retour à l'accueil">
+        <img src="assets/logo.png" alt="Théo &amp; Léa Micro-crèche" class="footer-logo-img" />
+      </a>
       <p>Un lieu de vie doux et naturel pour les tout-petits &mdash; fait avec 🌼 et beaucoup d'amour.</p>
       <p>© <span id="year"></span> Théo &amp; Léa Micro-crèche — Tous droits réservés</p>
-      <ul class="footer-links">
-        <li><a href="#home">Accueil</a></li>
-        <li><a href="#creche">La crèche</a></li>
-        <li><a href="#engagements">Engagements</a></li>
-        <li><a href="#projet">Le projet</a></li>
-        <li><a href="#inscription">Pré-inscription</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+      <a href="/feed.xml" class="rss-link" aria-label="Flux RSS — Actualités de la micro-crèche">
+        <svg class="rss-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <circle cx="6.5" cy="17.5" r="2.5"/>
+          <path d="M4 4a1 1 0 0 1 0 2C10.627 6 16 11.373 16 18a1 1 0 0 1-2 0C14 12.477 9.523 8 4 8a1 1 0 0 1 0-2z"/>
+          <path d="M4 10a1 1 0 0 1 0 2c3.314 0 6 2.686 6 6a1 1 0 0 1-2 0c0-2.21-1.79-4-4-4a1 1 0 0 1 0-2z"/>
+        </svg>
+        RSS
+      </a>
     </div>
   </footer>
 
