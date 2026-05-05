@@ -562,13 +562,23 @@
   <!-- ║  Actualités                  ║ -->
   <!-- ╚══════════════════════════════╝ -->
   <section class="actualites-section" id="actualites">
-    <div class="section-header">
-      <span class="section-tag">Nos nouvelles</span>
-      <h2>Actualités</h2>
-      <p>Retrouvez les dernières nouvelles de la micro-crèche Théo &amp; Léa.</p>
-    </div>
-    <div class="articles-grid">
-      <!-- Rempli dynamiquement par cms.js depuis la collection "articles" de Directus -->
+    <div class="actualites-inner">
+      <div class="section-header">
+        <span class="section-tag">Nos nouvelles</span>
+        <h2>Actualités</h2>
+        <p>Retrouvez les dernières nouvelles de la micro-crèche Théo &amp; Léa.</p>
+      </div>
+      <div class="articles-carousel">
+        <button class="articles-nav articles-nav--prev" aria-label="Articles plus récents" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="articles-grid">
+          <!-- Rempli dynamiquement par cms.js depuis la collection "articles" de Directus -->
+        </div>
+        <button class="articles-nav articles-nav--next" aria-label="Articles plus anciens" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
     </div>
   </section>
 

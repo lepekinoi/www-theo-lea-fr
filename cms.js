@@ -66,7 +66,7 @@ async function loadPages() {
 /* ── Articles (actualités) ───────────────────────────────── */
 async function loadArticles() {
   const articles = await fetchCMS(
-    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=6'
+    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=10'
   );
   const section = document.getElementById('actualites');
   if (!section) return;
@@ -77,10 +77,14 @@ async function loadArticles() {
   }
 
   const grid = section.querySelector('.articles-grid');
+  const btnPrev = section.querySelector('.articles-nav--prev');
+  const btnNext = section.querySelector('.articles-nav--next');
   if (!grid) return;
-  grid.innerHTML = '';
 
-  articles.forEach(article => {
+  const ARTICLES_PER_PAGE = 3;
+  let offset = 0;
+
+  function articleCardHtml(article) {
     const date = article.date_publication
       ? new Date(article.date_publication).toLocaleDateString('fr-FR', {
           day: 'numeric',
@@ -91,18 +95,37 @@ async function loadArticles() {
     const imgHtml = article.image
       ? `<img src="${assetUrl(article.image)}?width=480&quality=75" alt="${escapeHtml(article.titre)}" class="article-img" loading="lazy" />`
       : `<div class="article-img-placeholder" aria-hidden="true">📰</div>`;
-    grid.insertAdjacentHTML(
-      'beforeend',
-      `<article class="article-card">
+    return `<article class="article-card">
         ${imgHtml}
         <div class="article-body">
           ${date ? `<p class="article-date">${date}</p>` : ''}
           <h3 class="article-titre">${escapeHtml(article.titre)}</h3>
           <p class="article-extrait">${truncateHtml(article.contenu ?? '', 180)}</p>
         </div>
-      </article>`
-    );
-  });
+      </article>`;
+  }
+
+  function render() {
+    const visible = articles.slice(offset, offset + ARTICLES_PER_PAGE);
+    grid.innerHTML = visible.map(articleCardHtml).join('');
+    if (btnPrev) btnPrev.disabled = offset === 0;
+    if (btnNext) btnNext.disabled = offset + ARTICLES_PER_PAGE >= articles.length;
+  }
+
+  if (btnPrev) {
+    btnPrev.addEventListener('click', () => {
+      offset -= ARTICLES_PER_PAGE;
+      render();
+    });
+  }
+  if (btnNext) {
+    btnNext.addEventListener('click', () => {
+      offset += ARTICLES_PER_PAGE;
+      render();
+    });
+  }
+
+  render();
 }
 
 /* ── Galeries ────────────────────────────────────────────── */
