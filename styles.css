@@ -1204,43 +1204,115 @@ footer {
 }
 
 /* ── Galerie — photos Directus ───────────────────────────── */
-.gallery-item--photo {
-  padding: 0;
-  border: none;
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 1;
+.galeries-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.gallery-item--photo img {
+.galerie-bloc {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.galerie-titre {
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  color: var(--blue-dark);
+  text-align: center;
+}
+
+.galerie-desc-bloc {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  text-align: center;
+  margin-top: -0.25rem;
+}
+
+.galerie-carousel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.galerie-track-wrapper {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--sand-light);
+}
+
+.galerie-track {
+  display: flex;
+  transition: transform 0.4s ease;
+}
+
+.galerie-slide {
+  flex: 0 0 100%;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+.galerie-slide img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.35s ease;
 }
 
-.gallery-item--photo:hover img {
-  transform: scale(1.06);
+.galerie-nav {
+  flex-shrink: 0;
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  border: 2px solid var(--blue-light);
+  background: var(--white);
+  color: var(--blue-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
 }
 
-.gallery-caption {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(44, 95, 122, 0.75));
+.galerie-nav:hover:not(:disabled) {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
   color: var(--white);
-  font-size: 0.82rem;
-  padding: 0.8rem 0.8rem 0.5rem;
-  text-align: center;
 }
 
-.gallery-desc {
-  font-size: 0.78rem;
-  color: var(--text-mid);
-  margin: 0;
+.galerie-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
 }
+
+.galerie-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.galerie-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--orange-mid);
+  opacity: 0.35;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.galerie-dot--active {
+  opacity: 1;
+  transform: scale(1.35);
+}
+
 
 /* ── Documents ───────────────────────────────────────────── */
 .documents-section {
@@ -1311,6 +1383,8 @@ footer {
   .articles-carousel { gap: 0.5rem; }
   .articles-grid { grid-template-columns: 1fr; }
   .articles-nav { width: 2rem; height: 2rem; }
+  .galerie-carousel { gap: 0.5rem; }
+  .galerie-nav { width: 2.2rem; height: 2.2rem; }
 }
 
 @media (max-width: 600px) {
