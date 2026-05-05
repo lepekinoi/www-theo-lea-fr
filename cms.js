@@ -38,6 +38,7 @@ async function loadPages() {
       }
       if (creche.contenu) {
         const el = sec.querySelector('[data-cms-contenu]');
+        // Contenu rich text de confiance depuis le CMS interne
         if (el) el.innerHTML = creche.contenu;
       }
     }
@@ -47,6 +48,7 @@ async function loadPages() {
   const hero = bySlug['accueil'];
   if (hero) {
     if (hero.contenu) {
+      // Contenu rich text de confiance depuis le CMS interne
       const desc = document.querySelector('.hero-desc');
       if (desc) desc.innerHTML = hero.contenu;
     }
@@ -158,7 +160,7 @@ async function loadEquipe() {
   membres.forEach(m => {
     const imgHtml = m.photo
       ? `<img src="${assetUrl(m.photo)}?width=200&height=200&fit=cover&quality=80" alt="${escapeHtml(m.nom)}" class="equipe-photo" />`
-      : `<div class="equipe-photo equipe-photo--placeholder" aria-hidden="true">👤</div>`;
+      : `<div class="equipe-photo equipe-photo--placeholder" role="img" aria-label="Photo de profil non disponible pour ${escapeHtml(m.nom)}">👤</div>`;
     grid.insertAdjacentHTML(
       'beforeend',
       `<div class="equipe-card">
@@ -167,6 +169,7 @@ async function loadEquipe() {
         ${m.role ? `<p class="equipe-role">${escapeHtml(m.role)}</p>` : ''}
         ${m.bio ? `<div class="equipe-bio">${m.bio}</div>` : ''}
       </div>`
+      // Note : m.bio est un champ rich text de confiance depuis le CMS interne (innerHTML intentionnel)
     );
   });
 }
