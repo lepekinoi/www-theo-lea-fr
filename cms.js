@@ -65,11 +65,17 @@ async function loadPages() {
 
 /* ── Articles (actualités) ───────────────────────────────── */
 async function loadArticles() {
-  const articles = await fetchCMS(
-    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=10'
+  const rawArticles = await fetchCMS(
+    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=20'
   );
   const section = document.getElementById('actualites');
   if (!section) return;
+
+  // Ne pas afficher les articles dont la date de publication est dans le futur
+  const now = new Date();
+  const articles = rawArticles
+    ? rawArticles.filter(a => !a.date_publication || new Date(a.date_publication) <= now)
+    : null;
 
   if (!articles || articles.length === 0) {
     section.style.display = 'none';
@@ -84,7 +90,7 @@ async function loadArticles() {
   const ARTICLES_PER_PAGE = 3;
   let offset = 0;
 
-  function articleCardHtml(article) {
+  function articleCardHtml(article, idx) {
     const date = article.date_publication
       ? new Date(article.date_publication).toLocaleDateString('fr-FR', {
           day: 'numeric',
@@ -95,12 +101,13 @@ async function loadArticles() {
     const imgHtml = article.image
       ? `<img src="${assetUrl(article.image)}?width=480&quality=75" alt="${escapeHtml(article.titre)}" class="article-img" loading="lazy" />`
       : `<div class="article-img-placeholder" aria-hidden="true">📰</div>`;
-    return `<article class="article-card">
+    return `<article class="article-card" data-article-idx="${idx}" tabindex="0">
         ${imgHtml}
         <div class="article-body">
           ${date ? `<p class="article-date">${date}</p>` : ''}
           <h3 class="article-titre">${escapeHtml(article.titre)}</h3>
           <p class="article-extrait">${truncateHtml(article.contenu ?? '', 180)}</p>
+          <span class="article-lire-suite" aria-hidden="true">Lire la suite →</span>
         </div>
       </article>`;
   }
@@ -112,7 +119,7 @@ async function loadArticles() {
   function render() {
     const visible = articles.slice(offset, offset + ARTICLES_PER_PAGE);
     grid.style.gridTemplateColumns = `repeat(${visible.length}, minmax(0, 380px))`;
-    grid.innerHTML = visible.map(articleCardHtml).join('');
+    grid.innerHTML = visible.map((a, i) => articleCardHtml(a, offset + i)).join('');
     if (btnPrev) btnPrev.disabled = offset === 0;
     if (btnNext) btnNext.disabled = offset + ARTICLES_PER_PAGE >= articles.length;
   }
@@ -129,6 +136,76 @@ async function loadArticles() {
       render();
     });
   }
+
+  // ── Modal plein contenu ────────────────────────────────────
+  let modal = null;
+
+  function closeModal() {
+    if (!modal) return;
+    modal.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function openModal(article) {
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.className = 'article-modal';
+      modal.hidden = true;
+      modal.innerHTML = `
+        <div class="article-modal-backdrop"></div>
+        <div class="article-modal-box" role="dialog" aria-modal="true" aria-labelledby="article-modal-titre">
+          <button class="article-modal-close" aria-label="Fermer l'article">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+          <div class="article-modal-img-wrap"></div>
+          <div class="article-modal-body">
+            <p class="article-date article-modal-date"></p>
+            <h2 class="article-modal-titre" id="article-modal-titre"></h2>
+            <div class="article-modal-contenu"></div>
+          </div>
+        </div>`;
+      modal.querySelector('.article-modal-backdrop').addEventListener('click', closeModal);
+      modal.querySelector('.article-modal-close').addEventListener('click', closeModal);
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && !modal.hidden) closeModal();
+      });
+      document.body.appendChild(modal);
+    }
+
+    const dateStr = article.date_publication
+      ? new Date(article.date_publication).toLocaleDateString('fr-FR', {
+          day: 'numeric', month: 'long', year: 'numeric',
+        })
+      : '';
+    const imgWrap = modal.querySelector('.article-modal-img-wrap');
+    imgWrap.innerHTML = article.image
+      ? `<img src="${assetUrl(article.image)}?width=680&quality=80" alt="${escapeHtml(article.titre)}" class="article-modal-img" />`
+      : '';
+    modal.querySelector('.article-modal-date').textContent = dateStr;
+    modal.querySelector('.article-modal-titre').textContent = article.titre ?? '';
+    // Contenu rich text de confiance depuis le CMS interne
+    modal.querySelector('.article-modal-contenu').innerHTML = article.contenu ?? '';
+
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    modal.querySelector('.article-modal-close').focus();
+  }
+
+  grid.addEventListener('click', e => {
+    const card = e.target.closest('.article-card');
+    if (!card) return;
+    const idx = parseInt(card.dataset.articleIdx, 10);
+    if (!isNaN(idx) && articles[idx]) openModal(articles[idx]);
+  });
+
+  grid.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const card = e.target.closest('.article-card');
+    if (!card) return;
+    e.preventDefault();
+    const idx = parseInt(card.dataset.articleIdx, 10);
+    if (!isNaN(idx) && articles[idx]) openModal(articles[idx]);
+  });
 
   render();
 }

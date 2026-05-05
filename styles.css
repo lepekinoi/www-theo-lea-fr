@@ -1083,6 +1083,126 @@ footer {
   margin: 0;
 }
 
+.article-card {
+  cursor: pointer;
+}
+
+.article-lire-suite {
+  display: inline-block;
+  font-size: 0.82rem;
+  color: var(--blue-mid);
+  font-weight: 600;
+  margin-top: auto;
+  padding-top: 0.6rem;
+}
+
+.article-card:hover .article-lire-suite {
+  color: var(--blue-dark);
+  text-decoration: underline;
+}
+
+/* ── Modal article (plein contenu) ──────────────────────── */
+.article-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.article-modal[hidden] {
+  display: none;
+}
+
+.article-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+}
+
+.article-modal-box {
+  position: relative;
+  background: var(--white);
+  border-radius: var(--radius);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)   scale(1);    }
+}
+
+.article-modal-close {
+  position: sticky;
+  top: 0.75rem;
+  float: right;
+  margin: 0.75rem 0.75rem 0 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid var(--blue-light);
+  background: var(--white);
+  color: var(--text-dark);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  z-index: 1;
+}
+
+.article-modal-close:hover {
+  background: var(--blue-dark);
+  border-color: var(--blue-dark);
+  color: var(--white);
+}
+
+.article-modal-img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  clear: both;
+}
+
+.article-modal-body {
+  padding: 1.4rem 1.8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.article-modal-titre {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.article-modal-contenu {
+  font-size: 0.95rem;
+  color: var(--text-mid);
+  line-height: 1.75;
+  margin-top: 0.5rem;
+}
+
+.article-modal-contenu p { margin-bottom: 0.8rem; }
+
+.article-modal-contenu h2,
+.article-modal-contenu h3 {
+  font-family: var(--font-serif);
+  color: var(--text-dark);
+  margin: 1rem 0 0.4rem;
+}
+
 /* ── Galerie — photos Directus ───────────────────────────── */
 .gallery-item--photo {
   padding: 0;
