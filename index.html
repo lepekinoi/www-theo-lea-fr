@@ -15,7 +15,7 @@
   />
 
   <link rel="stylesheet" href="styles.css" />
-
+  <script type="module" src="cms.js"></script>
 
 </head>
 <body>
@@ -30,8 +30,11 @@
     <ul class="nav-links">
       <li><a href="#creche">La crèche</a></li>
       <li><a href="#engagements">Nos engagements</a></li>
+      <li><a href="#equipe">L'équipe</a></li>
+      <li><a href="#actualites">Actualités</a></li>
       <li><a href="#projet">Le projet</a></li>
       <li><a href="#valeurs">Nos valeurs</a></li>
+      <li><a href="#documents">Documents</a></li>
       <li><a href="#inscription">Pré-inscription</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -392,11 +395,12 @@
   <!-- ╔══════════════════════════════╗ -->
   <!-- ║  Un cocon de douceur         ║ -->
   <!-- ╚══════════════════════════════╝ -->
-  <section class="creche" id="creche">
+  <section class="creche" id="creche" data-cms-page="creche">
     <div class="creche-inner">
       <div class="creche-text">
         <span class="section-tag">Un cocon de douceur</span>
-        <h2>Un espace pensé pour les tout-petits</h2>
+        <h2 data-cms-titre>Un espace pensé pour les tout-petits</h2>
+        <div data-cms-contenu>
         <p>
           Nous préparons un lieu chaleureux, paisible et inspiré par la nature, pensé pour accompagner
           chaque enfant dans son rythme, ses découvertes et son bien-être au quotidien.
@@ -405,6 +409,7 @@
           La micro-crèche Théo &amp; Léa accueillera jusqu'à 10 enfants de 2 mois à 3 ans dans un
           cadre bienveillant, sécurisant et stimulant, où chaque tout-petit pourra s'épanouir librement.
         </p>
+        </div>
         <div class="opening-badge">
           <span class="opening-dot" aria-hidden="true"></span>
           <strong>Objectif d'ouverture : janvier 2027</strong>
@@ -460,6 +465,20 @@
         <h3>Sécurité &amp; confort</h3>
         <p>Des espaces aménagés avec soin, du mobilier adapté et des protocoles rigoureux pour garantir la sécurité de chaque enfant à tout moment.</p>
       </article>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  Notre équipe                ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="equipe-section" id="equipe">
+    <div class="section-header">
+      <span class="section-tag">Celles qui s'occupent de vos enfants</span>
+      <h2>Notre équipe</h2>
+      <p>Des professionnelles passionnées, bienveillantes et formées pour accompagner les tout-petits.</p>
+    </div>
+    <div class="equipe-grid">
+      <!-- Rempli dynamiquement par cms.js depuis la collection "equipe" de Directus -->
     </div>
   </section>
 
@@ -540,6 +559,20 @@
   </section>
 
   <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  Actualités                  ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="actualites-section" id="actualites">
+    <div class="section-header">
+      <span class="section-tag">Nos nouvelles</span>
+      <h2>Actualités</h2>
+      <p>Retrouvez les dernières nouvelles de la micro-crèche Théo &amp; Léa.</p>
+    </div>
+    <div class="articles-grid">
+      <!-- Rempli dynamiquement par cms.js depuis la collection "articles" de Directus -->
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
   <!-- ║  Nos valeurs                 ║ -->
   <!-- ╚══════════════════════════════╝ -->
   <section class="values" id="valeurs">
@@ -569,6 +602,20 @@
         <h3>Partenariat</h3>
         <p>Construire une relation de confiance avec les parents, les tenir informés et les associer à la vie de la crèche au quotidien.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- ╔══════════════════════════════╗ -->
+  <!-- ║  Documents                   ║ -->
+  <!-- ╚══════════════════════════════╝ -->
+  <section class="documents-section" id="documents">
+    <div class="section-header">
+      <span class="section-tag">Pour les familles</span>
+      <h2>Documents utiles</h2>
+      <p>Retrouvez ici les documents importants : règlement, menus, planning et autres informations pratiques.</p>
+    </div>
+    <div class="documents-list">
+      <!-- Rempli dynamiquement par cms.js depuis la collection "documents" de Directus -->
     </div>
   </section>
 
