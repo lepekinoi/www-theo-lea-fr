@@ -212,38 +212,96 @@ async function loadArticles() {
 
 /* ── Galeries ────────────────────────────────────────────── */
 async function loadGaleries() {
-  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.*&limit=3');
+  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.*&limit=10');
   const section = document.getElementById('espace');
   if (!section || !galeries || galeries.length === 0) return;
 
-  const grid = section.querySelector('.gallery-grid');
-  if (!grid) return;
+  const container = section.querySelector('.galeries-list');
+  if (!container) return;
 
-  grid.innerHTML = '';
+  container.innerHTML = '';
 
   galeries.forEach(galerie => {
-    const photos = (galerie.photos ?? []).slice(0, 6);
+    const photos = galerie.photos ?? [];
+
     if (photos.length === 0) {
-      grid.insertAdjacentHTML(
+      container.insertAdjacentHTML(
         'beforeend',
-        `<div class="gallery-item gallery-item--vide" tabindex="0" aria-label="${escapeHtml(galerie.titre)}">
-          <span aria-hidden="true">🖼️</span>
-          <span>${escapeHtml(galerie.titre)}</span>
-          ${galerie.description ? `<p class="gallery-desc">${escapeHtml(galerie.description)}</p>` : ''}
+        `<div class="galerie-bloc">
+          <h3 class="galerie-titre">${escapeHtml(galerie.titre)}</h3>
+          ${galerie.description ? `<p class="galerie-desc-bloc">${escapeHtml(galerie.description)}</p>` : ''}
+          <div class="gallery-item gallery-item--vide" tabindex="0" aria-label="${escapeHtml(galerie.titre)}">
+            <span aria-hidden="true">🖼️</span>
+            <span>Photos à venir</span>
+          </div>
         </div>`
       );
-    } else {
-      photos.forEach(p => {
-        const fileId = p.directus_files_id ?? p;
-        grid.insertAdjacentHTML(
-          'beforeend',
-          `<div class="gallery-item gallery-item--photo" tabindex="0">
-            <img src="${assetUrl(fileId)}?width=400&quality=75" alt="${escapeHtml(galerie.titre)}" loading="lazy" />
-            <span class="gallery-caption">${escapeHtml(galerie.titre)}</span>
-          </div>`
-        );
+      return;
+    }
+
+    const blocId = `galerie-${galerie.id}`;
+    const slidesHtml = photos.map(p => {
+      const fileId = p.directus_files_id ?? p;
+      return `<div class="galerie-slide">
+        <img src="${assetUrl(fileId)}?width=900&quality=80" alt="${escapeHtml(galerie.titre)}" loading="lazy" />
+      </div>`;
+    }).join('');
+
+    const hasMany = photos.length > 1;
+    const dotsHtml = hasMany
+      ? `<div class="galerie-dots" role="tablist" aria-label="Navigation photos">
+          ${photos.map((_, i) =>
+            `<button class="galerie-dot${i === 0 ? ' galerie-dot--active' : ''}" role="tab" aria-selected="${i === 0}" aria-label="Photo ${i + 1}" data-idx="${i}"></button>`
+          ).join('')}
+        </div>`
+      : '';
+
+    const prevBtn = hasMany
+      ? `<button class="galerie-nav galerie-nav--prev" aria-label="Photo précédente" disabled>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>` : '';
+    const nextBtn = hasMany
+      ? `<button class="galerie-nav galerie-nav--next" aria-label="Photo suivante">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>` : '';
+
+    container.insertAdjacentHTML(
+      'beforeend',
+      `<div class="galerie-bloc" id="${blocId}">
+        <h3 class="galerie-titre">${escapeHtml(galerie.titre)}</h3>
+        ${galerie.description ? `<p class="galerie-desc-bloc">${escapeHtml(galerie.description)}</p>` : ''}
+        <div class="galerie-carousel">
+          ${prevBtn}
+          <div class="galerie-track-wrapper">
+            <div class="galerie-track">${slidesHtml}</div>
+          </div>
+          ${nextBtn}
+        </div>
+        ${dotsHtml}
+      </div>`
+    );
+
+    const bloc = container.querySelector(`#${blocId}`);
+    const track = bloc.querySelector('.galerie-track');
+    const dots = [...bloc.querySelectorAll('.galerie-dot')];
+    const btnPrev = bloc.querySelector('.galerie-nav--prev');
+    const btnNext = bloc.querySelector('.galerie-nav--next');
+    let idx = 0;
+
+    function goTo(n) {
+      idx = Math.max(0, Math.min(n, photos.length - 1));
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      if (btnPrev) btnPrev.disabled = idx === 0;
+      if (btnNext) btnNext.disabled = idx === photos.length - 1;
+      dots.forEach((d, i) => {
+        d.classList.toggle('galerie-dot--active', i === idx);
+        d.setAttribute('aria-selected', String(i === idx));
       });
     }
+
+    if (btnPrev) btnPrev.addEventListener('click', () => goTo(idx - 1));
+    if (btnNext) btnNext.addEventListener('click', () => goTo(idx + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
   });
 }
 
