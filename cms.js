@@ -229,7 +229,7 @@ async function loadGaleries() {
         'beforeend',
         `<div class="galerie-bloc">
           <h3 class="galerie-titre">${escapeHtml(galerie.titre)}</h3>
-          ${galerie.description ? `<p class="galerie-desc-bloc">${escapeHtml(galerie.description)}</p>` : ''}
+          ${galerie.description ? `<div class="galerie-desc-bloc">${galerie.description}</div>` : ''}
           <div class="gallery-item gallery-item--vide" tabindex="0" aria-label="${escapeHtml(galerie.titre)}">
             <span aria-hidden="true">🖼️</span>
             <span>Photos à venir</span>
@@ -269,7 +269,7 @@ async function loadGaleries() {
       'beforeend',
       `<div class="galerie-bloc" id="${blocId}">
         <h3 class="galerie-titre">${escapeHtml(galerie.titre)}</h3>
-        ${galerie.description ? `<p class="galerie-desc-bloc">${escapeHtml(galerie.description)}</p>` : ''}
+        ${galerie.description ? `<div class="galerie-desc-bloc">${galerie.description}</div>` : ''}
         <div class="galerie-carousel">
           ${prevBtn}
           <div class="galerie-track-wrapper">
