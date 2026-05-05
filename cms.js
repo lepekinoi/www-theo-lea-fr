@@ -111,7 +111,7 @@ async function loadArticles() {
 
   function render() {
     const visible = articles.slice(offset, offset + ARTICLES_PER_PAGE);
-    grid.style.gridTemplateColumns = `repeat(${Math.min(visible.length, ARTICLES_PER_PAGE)}, minmax(0, 380px))`;
+    grid.style.gridTemplateColumns = `repeat(${visible.length}, minmax(0, 380px))`;
     grid.innerHTML = visible.map(articleCardHtml).join('');
     if (btnPrev) btnPrev.disabled = offset === 0;
     if (btnNext) btnNext.disabled = offset + ARTICLES_PER_PAGE >= articles.length;
