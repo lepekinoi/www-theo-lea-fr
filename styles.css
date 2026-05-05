@@ -1018,6 +1018,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.8rem;
+  justify-content: center;
 }
 
 .article-card {
