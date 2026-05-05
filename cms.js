@@ -212,7 +212,7 @@ async function loadArticles() {
 
 /* ── Galeries ────────────────────────────────────────────── */
 async function loadGaleries() {
-  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.*&limit=10');
+  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.*');
   const section = document.getElementById('espace');
   if (!section || !galeries || galeries.length === 0) return;
 
@@ -240,10 +240,10 @@ async function loadGaleries() {
     }
 
     const blocId = `galerie-${galerie.id}`;
-    const slidesHtml = photos.map(p => {
+    const slidesHtml = photos.map((p, i) => {
       const fileId = p.directus_files_id ?? p;
       return `<div class="galerie-slide">
-        <img src="${assetUrl(fileId)}?width=900&quality=80" alt="${escapeHtml(galerie.titre)}" loading="lazy" />
+        <img src="${assetUrl(fileId)}?width=900&quality=80" alt="${escapeHtml(galerie.titre)} — photo ${i + 1}" loading="lazy" />
       </div>`;
     }).join('');
 
