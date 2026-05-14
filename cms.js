@@ -4,13 +4,21 @@
    ============================================================ */
 
 const CMS_URL = 'https://cms.theo-lea.fr';
+const CACHE_TTL = 5 * 60 * 1000; // 5 minutes
+const _cache = {};
 
 async function fetchCMS(path) {
+  const now = Date.now();
+  if (_cache[path] && now - _cache[path].ts < CACHE_TTL) {
+    return _cache[path].data;
+  }
   try {
     const res = await fetch(`${CMS_URL}${path}`);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const json = await res.json();
-    return json.data ?? null;
+    const data = json.data ?? null;
+    _cache[path] = { ts: now, data };
+    return data;
   } catch (e) {
     console.warn('[CMS] Erreur de chargement :', path, e.message);
     return null;
@@ -21,13 +29,31 @@ function assetUrl(fileId) {
   return fileId ? `${CMS_URL}/assets/${fileId}` : null;
 }
 
+/* ── Skeleton helpers ────────────────────────────────────── */
+function skeletonCards(n, cls = 'skeleton-card') {
+  return Array.from({ length: n }, () =>
+    `<div class="${cls}" aria-hidden="true">
+      <div class="skel skel-img"></div>
+      <div class="skel skel-line skel-line--lg"></div>
+      <div class="skel skel-line"></div>
+      <div class="skel skel-line skel-line--sm"></div>
+    </div>`
+  ).join('');
+}
+
+function errorState(message = 'Contenu temporairement indisponible.') {
+  return `<div class="cms-error" role="alert">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <p>${escapeHtml(message)}</p>
+  </div>`;
+}
+
 /* ── Pages (contenus éditables par slug) ─────────────────── */
 async function loadPages() {
   const pages = await fetchCMS('/items/pages?fields=slug,titre,contenu,image_hero');
   if (!pages) return;
   const bySlug = Object.fromEntries(pages.map(p => [p.slug, p]));
 
-  // Mise à jour de la section "creche"
   const creche = bySlug['creche'];
   if (creche) {
     const sec = document.querySelector('[data-cms-page="creche"]');
@@ -38,17 +64,14 @@ async function loadPages() {
       }
       if (creche.contenu) {
         const el = sec.querySelector('[data-cms-contenu]');
-        // Contenu rich text de confiance depuis le CMS interne
         if (el) el.innerHTML = creche.contenu;
       }
     }
   }
 
-  // Mise à jour du hero
   const hero = bySlug['accueil'];
   if (hero) {
     if (hero.contenu) {
-      // Contenu rich text de confiance depuis le CMS interne
       const desc = document.querySelector('.hero-desc');
       if (desc) desc.innerHTML = hero.contenu;
     }
@@ -65,27 +88,40 @@ async function loadPages() {
 
 /* ── Articles (actualités) ───────────────────────────────── */
 async function loadArticles() {
-  const rawArticles = await fetchCMS(
-    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=20'
-  );
   const section = document.getElementById('actualites');
   if (!section) return;
 
-  // Ne pas afficher les articles dont la date de publication est dans le futur
+  const grid = section.querySelector('.articles-grid');
+  if (!grid) return;
+
+  // Skeleton pendant le chargement
+  grid.innerHTML = skeletonCards(3, 'article-card article-card--skeleton');
+
+  const rawArticles = await fetchCMS(
+    '/items/articles?sort=-date_publication&fields=id,titre,contenu,image,date_publication,slug&limit=20'
+  );
+
   const now = new Date();
   const articles = rawArticles
     ? rawArticles.filter(a => !a.date_publication || new Date(a.date_publication) <= now)
     : null;
 
   if (!articles || articles.length === 0) {
-    section.style.display = 'none';
+    grid.innerHTML = errorState(
+      rawArticles === null
+        ? 'Les actualités sont temporairement indisponibles.'
+        : 'Aucune actualité publiée pour le moment.'
+    );
+    // Masquer les boutons de navigation
+    const btnPrev = section.querySelector('.articles-nav--prev');
+    const btnNext = section.querySelector('.articles-nav--next');
+    if (btnPrev) btnPrev.style.display = 'none';
+    if (btnNext) btnNext.style.display = 'none';
     return;
   }
 
-  const grid = section.querySelector('.articles-grid');
   const btnPrev = section.querySelector('.articles-nav--prev');
   const btnNext = section.querySelector('.articles-nav--next');
-  if (!grid) return;
 
   const ARTICLES_PER_PAGE = 3;
   let offset = 0;
@@ -93,13 +129,11 @@ async function loadArticles() {
   function articleCardHtml(article, idx) {
     const date = article.date_publication
       ? new Date(article.date_publication).toLocaleDateString('fr-FR', {
-          day: 'numeric',
-          month: 'long',
-          year: 'numeric',
+          day: 'numeric', month: 'long', year: 'numeric',
         })
       : '';
     const imgHtml = article.image
-      ? `<img src="${assetUrl(article.image)}?width=480&quality=75" alt="${escapeHtml(article.titre)}" class="article-img" loading="lazy" />`
+      ? `<img src="${assetUrl(article.image)}?width=480&quality=75" alt="${escapeHtml(article.titre)}" class="article-img" loading="lazy" width="480" height="280" />`
       : `<div class="article-img-placeholder" aria-hidden="true">📰</div>`;
     return `<article class="article-card" data-article-idx="${idx}" tabindex="0">
         ${imgHtml}
@@ -124,18 +158,8 @@ async function loadArticles() {
     if (btnNext) btnNext.disabled = offset + ARTICLES_PER_PAGE >= articles.length;
   }
 
-  if (btnPrev) {
-    btnPrev.addEventListener('click', () => {
-      offset -= ARTICLES_PER_PAGE;
-      render();
-    });
-  }
-  if (btnNext) {
-    btnNext.addEventListener('click', () => {
-      offset += ARTICLES_PER_PAGE;
-      render();
-    });
-  }
+  if (btnPrev) btnPrev.addEventListener('click', () => { offset -= ARTICLES_PER_PAGE; render(); });
+  if (btnNext) btnNext.addEventListener('click', () => { offset += ARTICLES_PER_PAGE; render(); });
 
   // ── Modal plein contenu ────────────────────────────────────
   let modal = null;
@@ -166,9 +190,7 @@ async function loadArticles() {
         </div>`;
       modal.querySelector('.article-modal-backdrop').addEventListener('click', closeModal);
       modal.querySelector('.article-modal-close').addEventListener('click', closeModal);
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && !modal.hidden) closeModal();
-      });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape' && !modal.hidden) closeModal(); });
       document.body.appendChild(modal);
     }
 
@@ -183,7 +205,6 @@ async function loadArticles() {
       : '';
     modal.querySelector('.article-modal-date').textContent = dateStr;
     modal.querySelector('.article-modal-titre').textContent = article.titre ?? '';
-    // Contenu rich text de confiance depuis le CMS interne
     modal.querySelector('.article-modal-contenu').innerHTML = article.contenu ?? '';
 
     modal.hidden = false;
@@ -212,17 +233,101 @@ async function loadArticles() {
 
 /* ── Galeries ────────────────────────────────────────────── */
 async function loadGaleries() {
-  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.*');
   const section = document.getElementById('espace');
-  if (!section || !galeries || galeries.length === 0) return;
+  if (!section) return;
 
   const container = section.querySelector('.galeries-list');
   if (!container) return;
 
+  // Skeleton pendant le chargement
+  container.innerHTML = `<div class="galerie-bloc galerie-bloc--skeleton" aria-hidden="true">
+    <div class="skel skel-line skel-line--lg" style="width:200px;margin-bottom:1rem"></div>
+    <div class="skel skel-galerie"></div>
+  </div>`;
+
+  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.directus_files_id');
+
+  if (!galeries || galeries.length === 0) {
+    container.innerHTML = errorState(
+      galeries === null
+        ? 'La galerie est temporairement indisponible.'
+        : 'Aucune galerie disponible pour le moment.'
+    );
+    return;
+  }
+
   container.innerHTML = '';
 
+  // ── Lightbox ───────────────────────────────────────────────
+  let lightbox = null;
+  let lbPhotos = [];
+  let lbIdx = 0;
+
+  function closeLightbox() {
+    if (!lightbox) return;
+    lightbox.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  function openLightbox(photos, startIdx) {
+    lbPhotos = photos;
+    lbIdx = startIdx;
+
+    if (!lightbox) {
+      lightbox = document.createElement('div');
+      lightbox.className = 'lightbox';
+      lightbox.hidden = true;
+      lightbox.innerHTML = `
+        <div class="lightbox-backdrop"></div>
+        <button class="lightbox-close" aria-label="Fermer la lightbox">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <button class="lightbox-nav lightbox-prev" aria-label="Photo précédente">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="lightbox-img-wrap" role="dialog" aria-modal="true" aria-label="Galerie photo agrandie">
+          <img class="lightbox-img" src="" alt="" />
+          <p class="lightbox-counter"></p>
+        </div>
+        <button class="lightbox-nav lightbox-next" aria-label="Photo suivante">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>`;
+      lightbox.querySelector('.lightbox-backdrop').addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-close').addEventListener('click', closeLightbox);
+      lightbox.querySelector('.lightbox-prev').addEventListener('click', () => lbGo(lbIdx - 1));
+      lightbox.querySelector('.lightbox-next').addEventListener('click', () => lbGo(lbIdx + 1));
+      document.addEventListener('keydown', e => {
+        if (lightbox.hidden) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lbGo(lbIdx - 1);
+        if (e.key === 'ArrowRight') lbGo(lbIdx + 1);
+      });
+      document.body.appendChild(lightbox);
+    }
+
+    lbGo(lbIdx);
+    lightbox.hidden = false;
+    document.body.style.overflow = 'hidden';
+    lightbox.querySelector('.lightbox-close').focus();
+  }
+
+  function lbGo(n) {
+    lbIdx = Math.max(0, Math.min(n, lbPhotos.length - 1));
+    const fileId = lbPhotos[lbIdx];
+    const img = lightbox.querySelector('.lightbox-img');
+    img.src = `${assetUrl(fileId)}?width=1200&quality=85`;
+    img.alt = `Photo ${lbIdx + 1} sur ${lbPhotos.length}`;
+    lightbox.querySelector('.lightbox-counter').textContent = `${lbIdx + 1} / ${lbPhotos.length}`;
+    lightbox.querySelector('.lightbox-prev').disabled = lbIdx === 0;
+    lightbox.querySelector('.lightbox-next').disabled = lbIdx === lbPhotos.length - 1;
+  }
+
+  // ── Rendu galeries ─────────────────────────────────────────
   galeries.forEach(galerie => {
-    const photos = galerie.photos ?? [];
+    // Normalise la liste des fileIds (junction table → directus_files_id)
+    const photos = (galerie.photos ?? [])
+      .map(p => (p && typeof p === 'object' ? p.directus_files_id : p))
+      .filter(Boolean);
 
     if (photos.length === 0) {
       container.insertAdjacentHTML(
@@ -240,14 +345,26 @@ async function loadGaleries() {
     }
 
     const blocId = `galerie-${galerie.id}`;
-    const slidesHtml = photos.map((p, i) => {
-      const fileId = p.directus_files_id ?? p;
-      return `<div class="galerie-slide">
-        <img src="${assetUrl(fileId)}?width=900&quality=80" alt="${escapeHtml(galerie.titre)} — photo ${i + 1}" loading="lazy" />
-      </div>`;
-    }).join('');
-
     const hasMany = photos.length > 1;
+
+    const slidesHtml = photos.map((fileId, i) =>
+      `<div class="galerie-slide">
+        <img
+          src="${assetUrl(fileId)}?width=900&quality=80"
+          alt="${escapeHtml(galerie.titre)} — photo ${i + 1}"
+          loading="lazy"
+          width="900"
+          height="600"
+          class="galerie-slide-img"
+          data-lightbox-idx="${i}"
+          tabindex="0"
+          role="button"
+          aria-label="Agrandir photo ${i + 1}"
+          style="cursor:zoom-in"
+        />
+      </div>`
+    ).join('');
+
     const dotsHtml = hasMany
       ? `<div class="galerie-dots" role="tablist" aria-label="Navigation photos">
           ${photos.map((_, i) =>
@@ -302,27 +419,50 @@ async function loadGaleries() {
     if (btnPrev) btnPrev.addEventListener('click', () => goTo(idx - 1));
     if (btnNext) btnNext.addEventListener('click', () => goTo(idx + 1));
     dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+
+    // Lightbox au clic/Enter sur une image
+    bloc.addEventListener('click', e => {
+      const img = e.target.closest('.galerie-slide-img');
+      if (!img) return;
+      const i = parseInt(img.dataset.lightboxIdx, 10);
+      if (!isNaN(i)) openLightbox(photos, i);
+    });
+    bloc.addEventListener('keydown', e => {
+      if (e.key !== 'Enter' && e.key !== ' ') return;
+      const img = e.target.closest('.galerie-slide-img');
+      if (!img) return;
+      e.preventDefault();
+      const i = parseInt(img.dataset.lightboxIdx, 10);
+      if (!isNaN(i)) openLightbox(photos, i);
+    });
   });
 }
 
 /* ── Équipe ──────────────────────────────────────────────── */
 async function loadEquipe() {
-  const membres = await fetchCMS('/items/equipe?fields=id,nom,role,photo,bio');
   const section = document.getElementById('equipe');
   if (!section) return;
 
+  const grid = section.querySelector('.equipe-grid');
+  if (!grid) return;
+
+  grid.innerHTML = skeletonCards(3, 'equipe-card equipe-card--skeleton');
+
+  const membres = await fetchCMS('/items/equipe?fields=id,nom,role,photo,bio');
+
   if (!membres || membres.length === 0) {
-    section.style.display = 'none';
+    grid.innerHTML = errorState(
+      membres === null
+        ? "L'équipe est temporairement indisponible."
+        : 'Aucun membre à afficher pour le moment.'
+    );
     return;
   }
 
-  const grid = section.querySelector('.equipe-grid');
-  if (!grid) return;
   grid.innerHTML = '';
-
   membres.forEach(m => {
     const imgHtml = m.photo
-      ? `<img src="${assetUrl(m.photo)}?width=200&height=200&fit=cover&quality=80" alt="${escapeHtml(m.nom)}" class="equipe-photo" />`
+      ? `<img src="${assetUrl(m.photo)}?width=200&height=200&fit=cover&quality=80" alt="${escapeHtml(m.nom)}" class="equipe-photo" width="200" height="200" loading="lazy" />`
       : `<div class="equipe-photo equipe-photo--placeholder" role="img" aria-label="Photo de profil non disponible pour ${escapeHtml(m.nom)}">👤</div>`;
     grid.insertAdjacentHTML(
       'beforeend',
@@ -332,27 +472,30 @@ async function loadEquipe() {
         ${m.role ? `<p class="equipe-role">${escapeHtml(m.role)}</p>` : ''}
         ${m.bio ? `<div class="equipe-bio">${m.bio}</div>` : ''}
       </div>`
-      // Note : m.bio est un champ rich text de confiance depuis le CMS interne (innerHTML intentionnel)
     );
   });
 }
 
 /* ── Documents ───────────────────────────────────────────── */
 async function loadDocuments() {
-  const docs = await fetchCMS('/items/documents?fields=id,titre,categorie,fichier.*&sort=categorie,titre');
   const section = document.getElementById('documents');
   if (!section) return;
 
+  const list = section.querySelector('.documents-list');
+  if (!list) return;
+
+  const docs = await fetchCMS('/items/documents?fields=id,titre,categorie,fichier.*&sort=categorie,titre');
+
   if (!docs || docs.length === 0) {
-    section.style.display = 'none';
+    list.innerHTML = errorState(
+      docs === null
+        ? 'Les documents sont temporairement indisponibles.'
+        : 'Aucun document disponible pour le moment.'
+    );
     return;
   }
 
-  const list = section.querySelector('.documents-list');
-  if (!list) return;
   list.innerHTML = '';
-
-  // Regroupement par catégorie
   const byCategorie = {};
   docs.forEach(d => {
     const cat = d.categorie ?? 'autres';
