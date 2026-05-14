@@ -29,7 +29,7 @@ function assetUrl(fileId) {
   return fileId ? `${CMS_URL}/assets/${fileId}` : null;
 }
 
-/* ── Skeleton helpers ────────────────────────────────────── */
+/* ── Skeleton helpers ─────────────────────────────────────────── */
 function skeletonCards(n, cls = 'skeleton-card') {
   return Array.from({ length: n }, () =>
     `<div class="${cls}" aria-hidden="true">
@@ -48,7 +48,7 @@ function errorState(message = 'Contenu temporairement indisponible.') {
   </div>`;
 }
 
-/* ── Pages (contenus éditables par slug) ─────────────────── */
+/* ── Pages (contenus éditables par slug) ────────────────────── */
 async function loadPages() {
   const pages = await fetchCMS('/items/pages?fields=slug,titre,contenu,image_hero');
   if (!pages) return;
@@ -112,7 +112,6 @@ async function loadArticles() {
         ? 'Les actualités sont temporairement indisponibles.'
         : 'Aucune actualité publiée pour le moment.'
     );
-    // Masquer les boutons de navigation
     const btnPrev = section.querySelector('.articles-nav--prev');
     const btnNext = section.querySelector('.articles-nav--next');
     if (btnPrev) btnPrev.style.display = 'none';
@@ -161,7 +160,7 @@ async function loadArticles() {
   if (btnPrev) btnPrev.addEventListener('click', () => { offset -= ARTICLES_PER_PAGE; render(); });
   if (btnNext) btnNext.addEventListener('click', () => { offset += ARTICLES_PER_PAGE; render(); });
 
-  // ── Modal plein contenu ────────────────────────────────────
+  // ── Modal plein contenu ──────────────────────────────────────────
   let modal = null;
 
   function closeModal() {
@@ -231,7 +230,7 @@ async function loadArticles() {
   render();
 }
 
-/* ── Galeries ────────────────────────────────────────────── */
+/* ── Galeries ────────────────────────────────────────────────── */
 async function loadGaleries() {
   const section = document.getElementById('espace');
   if (!section) return;
@@ -245,7 +244,10 @@ async function loadGaleries() {
     <div class="skel skel-galerie"></div>
   </div>`;
 
-  const galeries = await fetchCMS('/items/galeries?fields=id,titre,description,photos.directus_files_id');
+  // Normalise le schéma M2M : accepte images.directus_files_id OU photos.directus_files_id OU tableau plat
+  const galeries = await fetchCMS(
+    '/items/galeries?fields=id,titre,description,photos.directus_files_id,images.directus_files_id'
+  );
 
   if (!galeries || galeries.length === 0) {
     container.innerHTML = errorState(
@@ -258,7 +260,7 @@ async function loadGaleries() {
 
   container.innerHTML = '';
 
-  // ── Lightbox ───────────────────────────────────────────────
+  // ── Lightbox ──────────────────────────────────────────────────
   let lightbox = null;
   let lbPhotos = [];
   let lbIdx = 0;
@@ -299,7 +301,7 @@ async function loadGaleries() {
       document.addEventListener('keydown', e => {
         if (lightbox.hidden) return;
         if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') lbGo(lbIdx - 1);
+        if (e.key === 'ArrowLeft')  lbGo(lbIdx - 1);
         if (e.key === 'ArrowRight') lbGo(lbIdx + 1);
       });
       document.body.appendChild(lightbox);
@@ -322,12 +324,25 @@ async function loadGaleries() {
     lightbox.querySelector('.lightbox-next').disabled = lbIdx === lbPhotos.length - 1;
   }
 
-  // ── Rendu galeries ─────────────────────────────────────────
-  galeries.forEach(galerie => {
-    // Normalise la liste des fileIds (junction table → directus_files_id)
-    const photos = (galerie.photos ?? [])
-      .map(p => (p && typeof p === 'object' ? p.directus_files_id : p))
+  /* Normalise les photos d'une galerie quel que soit le schéma M2M :
+     - galerie.photos  = [{ directus_files_id: "uuid" }]
+     - galerie.images  = [{ directus_files_id: "uuid" }]  (nom alternatif)
+     - ou tableau de strings directement */
+  function extractPhotoIds(galerie) {
+    const raw = galerie.photos ?? galerie.images ?? [];
+    return raw
+      .map(p => {
+        if (!p) return null;
+        if (typeof p === 'string') return p;
+        if (typeof p === 'object') return p.directus_files_id ?? p.id ?? null;
+        return null;
+      })
       .filter(Boolean);
+  }
+
+  // ── Rendu galeries ────────────────────────────────────────────
+  galeries.forEach(galerie => {
+    const photos = extractPhotoIds(galerie);
 
     if (photos.length === 0) {
       container.insertAdjacentHTML(
@@ -438,7 +453,73 @@ async function loadGaleries() {
   });
 }
 
-/* ── Équipe ──────────────────────────────────────────────── */
+/* ── Horaires ───────────────────────────────────────────────────
+   Pré-requis Directus : collection `horaires` avec les champs :
+     - id, jour (string), heure_ouverture (time), heure_fermeture (time),
+       ouvert (boolean), note (string, optionnel)
+   Référence HTML : <section id="horaires"> ... <ul class="horaires-list"> ... </ul> </section>
+   ─────────────────────────────────────────────────── */
+async function loadHoraires() {
+  const section = document.getElementById('horaires');
+  if (!section) return;
+
+  const list = section.querySelector('.horaires-list');
+  if (!list) return;
+
+  // Skeleton : 5 lignes pendant le chargement
+  list.innerHTML = Array.from({ length: 5 }, () =>
+    `<li class="horaire-item" aria-hidden="true">
+      <div class="skel skel-line" style="width:110px"></div>
+      <div class="skel skel-line skel-line--sm"></div>
+    </li>`
+  ).join('');
+
+  const horaires = await fetchCMS('/items/horaires?sort=sort,id&fields=jour,heure_ouverture,heure_fermeture,ouvert,note');
+
+  if (!horaires || horaires.length === 0) {
+    list.innerHTML = errorState(
+      horaires === null
+        ? 'Les horaires sont temporairement indisponibles.'
+        : 'Aucun horaire configuré pour le moment.'
+    );
+    return;
+  }
+
+  // Jour actuel pour mise en surbrillance
+  const JOURS = ['dimanche', 'lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi'];
+  const todayName = JOURS[new Date().getDay()];
+
+  list.innerHTML = '';
+
+  horaires.forEach(h => {
+    const isToday = h.jour?.toLowerCase() === todayName;
+    const isFerme = !h.ouvert;
+
+    let horairesText;
+    if (isFerme) {
+      horairesText = `<span class="horaire-ferme">Fermé</span>`;
+    } else if (h.heure_ouverture && h.heure_fermeture) {
+      // Formate HH:MM depuis HH:MM:SS
+      const fmt = t => String(t ?? '').slice(0, 5);
+      horairesText = `<span class="horaire-heures">${fmt(h.heure_ouverture)} – ${fmt(h.heure_fermeture)}</span>`;
+    } else {
+      horairesText = `<span class="horaire-heures">Voir avec la crèche</span>`;
+    }
+
+    list.insertAdjacentHTML(
+      'beforeend',
+      `<li class="horaire-item${isToday ? ' horaire-item--today' : ''}${isFerme ? ' horaire-item--ferme' : ''}">
+        <span class="horaire-jour">${escapeHtml(capitalize(h.jour ?? ''))}</span>
+        <span class="horaire-valeur">
+          ${horairesText}
+          ${h.note ? `<em class="horaire-note">${escapeHtml(h.note)}</em>` : ''}
+        </span>
+      </li>`
+    );
+  });
+}
+
+/* ── Équipe ──────────────────────────────────────────────────── */
 async function loadEquipe() {
   const section = document.getElementById('equipe');
   if (!section) return;
@@ -476,7 +557,7 @@ async function loadEquipe() {
   });
 }
 
-/* ── Documents ───────────────────────────────────────────── */
+/* ── Documents ─────────────────────────────────────────────── */
 async function loadDocuments() {
   const section = document.getElementById('documents');
   if (!section) return;
@@ -523,7 +604,7 @@ async function loadDocuments() {
   });
 }
 
-/* ── Helpers ─────────────────────────────────────────────── */
+/* ── Helpers ─────────────────────────────────────────────────────── */
 function escapeHtml(str) {
   if (str == null) return '';
   return String(str)
@@ -544,11 +625,12 @@ function capitalize(str) {
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-/* ── Init ────────────────────────────────────────────────── */
+/* ── Init ──────────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
   loadPages();
   loadArticles();
   loadGaleries();
   loadEquipe();
   loadDocuments();
+  loadHoraires();
 });
