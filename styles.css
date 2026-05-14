@@ -1596,6 +1596,97 @@ footer {
   .lightbox-close { top: 0.7rem; right: 0.8rem; }
 }
 
+/* ============================================================
+   V4 — Horaires d'ouverture
+   ============================================================ */
+
+/* ── Section horaires ────────────────────────────────────── */
+.horaires-section {
+  background: var(--white);
+  border-top: 1px solid var(--sand-light);
+  border-bottom: 1px solid var(--sand-light);
+}
+
+/* ── Liste des horaires ──────────────────────────────────── */
+.horaires-list {
+  list-style: none;
+  max-width: 480px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.horaire-item {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.7rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--sand-pale);
+  border: 1px solid transparent;
+  transition: background 0.18s, border-color 0.18s;
+}
+
+/* Jour courant mis en avant */
+.horaire-item--today {
+  background: var(--blue-pale);
+  border-color: var(--blue-light);
+  font-weight: 600;
+}
+
+/* Ligne fermée, atténuée */
+.horaire-item--ferme {
+  opacity: 0.55;
+}
+
+.horaire-jour {
+  font-size: 0.9rem;
+  color: var(--text-dark);
+  min-width: 90px;
+  font-weight: 500;
+}
+
+.horaire-item--today .horaire-jour {
+  color: var(--blue-dark);
+}
+
+.horaire-valeur {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+}
+
+.horaire-heures {
+  font-size: 0.9rem;
+  color: var(--text-mid);
+  font-variant-numeric: tabular-nums;
+}
+
+.horaire-item--today .horaire-heures {
+  color: var(--blue-dark);
+}
+
+.horaire-ferme {
+  font-size: 0.82rem;
+  color: var(--text-light);
+  font-style: italic;
+}
+
+.horaire-note {
+  font-size: 0.76rem;
+  color: var(--orange-mid);
+  font-style: italic;
+}
+
+/* Skeleton lignes horaires */
+.horaire-item .skel-line {
+  height: 0.85em;
+  border-radius: var(--radius-sm);
+}
+
 /* ── Responsive global ───────────────────────────────────── */
 @media (max-width: 768px) {
   .articles-carousel { gap: 0.5rem; }
@@ -1603,6 +1694,8 @@ footer {
   .articles-nav { width: 2rem; height: 2rem; }
   .galerie-carousel { gap: 0.5rem; }
   .galerie-nav { width: 2.2rem; height: 2.2rem; }
+  .horaires-list { max-width: 100%; }
+  .horaire-item { padding: 0.65rem 0.8rem; }
 }
 
 @media (max-width: 600px) {
