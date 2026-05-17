@@ -106,8 +106,10 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 ## 🔒 Phase 4 — Technique & performance (en continu)
 
 - [ ] **Optimisation images** — Format WebP, `loading="lazy"`, `srcset` responsive
+- [ ] **Minification de production** — Minifier HTML/CSS sur l’environnement de déploiement
 - [ ] **Score Lighthouse ≥ 90** — Performance, accessibilité, SEO, best practices
 - [ ] **SEO local** — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
+- [ ] **Sitemap.xml** — Générer et exposer un sitemap XML pour l’indexation
 - [ ] **HTTPS** — Certificat SSL actif via hébergeur
 - [ ] **Analytics RGPD-friendly** — Plausible ou Umami (sans cookies)
 - [ ] **Accessibilité renforcée** — Audit WCAG AA complet

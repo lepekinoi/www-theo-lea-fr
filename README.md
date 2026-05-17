@@ -27,15 +27,15 @@ Page vitrine entièrement statique — aucune dépendance, aucun serveur, aucun 
 
 ## 🎨 Identité visuelle
 
-| Rôle | Couleur | Code hex |
-|------|---------|----------|
-| Bleu foncé (titres, nav, CTA) | Bleu canard profond | `#2C5F7A` |
-| Bleu moyen (liens, accents) | Bleu azur | `#4A8FA8` |
-| Bleu clair (fonds, halos) | Ciel pâle | `#A8CBDA` |
-| Sable foncé (icônes bois) | Bois chaud | `#8B6B45` |
-| Sable moyen (bordures, tags) | Sable doré | `#C4986A` |
-| Sable clair (fonds cartes) | Lin | `#E8D5B7` |
-| Fond principal | Ivoire naturel | `#F7F0E6` |
+| Rôle | Couleur | Code hex | Aperçu |
+|------|---------|----------|---------|
+| Bleu foncé (titres, nav, CTA) | Bleu canard profond | `#2C5F7A` | 🔵 |
+| Bleu moyen (liens, accents) | Bleu azur | `#4A8FA8` | 🔷 |
+| Bleu clair (fonds, halos) | Ciel pâle | `#A8CBDA` | 🩵 |
+| Sable foncé (icônes bois) | Bois chaud | `#8B6B45` | 🟤 |
+| Sable moyen (bordures, tags) | Sable doré | `#C4986A` | 🟫 |
+| Sable clair (fonds cartes) | Lin | `#E8D5B7` | 🟨 |
+| Fond principal | Ivoire naturel | `#F7F0E6` | 🤍 |
 
 **Typographies :**
 - **Playfair Display** — titres, ambiance serif chaleureuse
