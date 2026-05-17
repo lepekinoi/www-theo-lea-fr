@@ -108,7 +108,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 ### 🔧 Technique
 
 - [ ] **Logo Meeko en local** *(Priorité P1)* — Héberger le favicon Meeko dans `assets/` pour éviter la dépendance externe
-  - Actuellement : `https://meeko.app/assets/apple-touch-icon-BeUq_aiW.png`
+  - Actuellement : image Meeko chargée depuis une URL externe (`meeko.app`) dans `index.html`
   - Cible : `/assets/meeko-favicon.png`
 
 ---
