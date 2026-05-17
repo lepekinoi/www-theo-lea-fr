@@ -3,6 +3,8 @@
 Site officiel de la micro-crèche **Théo & Léa**, à Notre-Dame-des-Landes (44130).  
 Ouverture prévue en **janvier 2027**.
 
+> **Version actuelle : v2 statique** — après abandon du CMS Directus, retour à une architecture HTML + CSS pure, zéro dépendance.
+
 ---
 
 ## ✨ Présentation
@@ -27,13 +29,13 @@ Page vitrine entièrement statique — aucune dépendance, aucun serveur, aucun 
 
 | Rôle | Couleur | Code hex |
 |------|---------|----------|
-| Bleu foncé (titres, nav, CTA) | `#2C5F7A` |
-| Bleu moyen (liens, accents) | `#4A8FA8` |
-| Bleu clair (fonds, halos) | `#A8CBDA` |
-| Sable foncé (icônes bois) | `#8B6B45` |
-| Sable moyen (bordures, tags) | `#C4986A` |
-| Sable clair (fonds cartes) | `#E8D5B7` |
-| Fond principal | `#F7F0E6` |
+| Bleu foncé (titres, nav, CTA) | Bleu canard profond | `#2C5F7A` |
+| Bleu moyen (liens, accents) | Bleu azur | `#4A8FA8` |
+| Bleu clair (fonds, halos) | Ciel pâle | `#A8CBDA` |
+| Sable foncé (icônes bois) | Bois chaud | `#8B6B45` |
+| Sable moyen (bordures, tags) | Sable doré | `#C4986A` |
+| Sable clair (fonds cartes) | Lin | `#E8D5B7` |
+| Fond principal | Ivoire naturel | `#F7F0E6` |
 
 **Typographies :**
 - **Playfair Display** — titres, ambiance serif chaleureuse
@@ -64,7 +66,7 @@ www-theo-lea-fr/
 | Section | ID | Description |
 |---------|----|-------------|
 | Navigation | `nav` | Sticky, liens internes |
-| Hero | `#home` | Logo, pissenlit SVG animés, CTA, badge ouverture |
+| Hero | `#home` | Logo, pissenlits SVG animés, CTA, badge ouverture |
 | La crèche | `#creche` | Présentation du projet et du lieu |
 | Nos engagements | `#engagements` | 6 cartes : nature, bienveillance, rythme, alimentation, créativité, sécurité |
 | Notre projet | `#projet` | Timeline de 2024 à l'ouverture janvier 2027 |
@@ -113,3 +115,7 @@ python3 -m http.server 8000
 ## 📜 Licence
 
 © Théo & Léa — Tous droits réservés. Contenu personnel, non réutilisable sans autorisation.
+
+---
+
+*Dernière mise à jour : Mai 2026*

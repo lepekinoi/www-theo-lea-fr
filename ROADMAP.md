@@ -1,7 +1,7 @@
 # 🗺️ ROADMAP — www.theo-lea.fr
 
 Feuille de route du site officiel de la micro-crèche **Théo & Léa** à Notre-Dame-des-Landes.  
-Le site est une **page vitrine statique** (HTML + CSS, zéro dépendance). Les priorités sont organisées par phases.
+Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) — après abandon de l'architecture Directus/CMS. Les priorités sont organisées par phases.
 
 ---
 
@@ -22,15 +22,16 @@ Le site est une **page vitrine statique** (HTML + CSS, zéro dépendance). Les p
 - [x] Liens Facebook & Instagram
 - [x] Copyright dynamique (année via JS)
 - [x] README & ROADMAP
+- [x] Abandon CMS Directus → retour architecture statique pure
 
 ---
 
-## 🚧 Phase 1 — Contenu réel (court terme)
+## 🔄 Phase 1 — Contenu réel (en cours)
 
-> Objectif : remplacer les placeholders par les vrais contenus de la crèche
+> Objectif : remplacer les placeholders et affiner les textes existants
 
+- [ ] **Révision des textes** — Ajustements et reformulations légères sur l'ensemble des sections
 - [ ] **Photos réelles** — Remplacer l'illustration `enfants.png` et les placeholders de galerie par de vraies photos du lieu
-- [ ] **Textes finalisés** — Rédiger les textes définitifs pour chaque section
 - [ ] **Favicon** — Créer un favicon pissenlit / initiales T&L aux couleurs de la crèche
 - [ ] **Open Graph** — Métadonnées pour le partage réseaux sociaux (`og:title`, `og:image`, `og:description`)
 - [ ] **Horaires d'ouverture** — Ajouter une section ou une mention des horaires d'accueil
@@ -103,4 +104,4 @@ Le site est une **page vitrine statique** (HTML + CSS, zéro dépendance). Les p
 
 ---
 
-*Dernière mise à jour : Mai 2026 — retour à la version statique (suppression de Directus/CMS), réécriture complète des docs.*
+*Dernière mise à jour : Mai 2026 — Phase 1 en cours (révision des textes). Architecture v2 statique.*
