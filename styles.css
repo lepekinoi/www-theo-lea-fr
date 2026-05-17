@@ -414,7 +414,7 @@ section { padding: var(--section-pad); }
 }
 
 .enfants-img {
-  max-width: 400px;
+  max-width: 320px;
   width: 100%;
   opacity: 0.85;
   filter: drop-shadow(0 8px 24px rgba(44, 95, 122, 0.12));
