@@ -116,6 +116,10 @@ nav {
               linear-gradient(to bottom, var(--sand-pale) 0%, var(--orange-pale) 100%);
 }
 
+#home {
+  scroll-margin-top: var(--nav-height);
+}
+
 /* ── Pissenlits décoratifs ───────────────────────────────── */
 .hero-dandelions {
   position: absolute;
