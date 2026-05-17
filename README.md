@@ -27,15 +27,15 @@ Page vitrine entièrement statique — aucune dépendance, aucun serveur, aucun 
 
 ## 🎨 Identité visuelle
 
-| Rôle | Couleur | Code hex |
-|------|---------|----------|
-| Bleu foncé (titres, nav, CTA) | Bleu canard profond | `#2C5F7A` |
-| Bleu moyen (liens, accents) | Bleu azur | `#4A8FA8` |
-| Bleu clair (fonds, halos) | Ciel pâle | `#A8CBDA` |
-| Sable foncé (icônes bois) | Bois chaud | `#8B6B45` |
-| Sable moyen (bordures, tags) | Sable doré | `#C4986A` |
-| Sable clair (fonds cartes) | Lin | `#E8D5B7` |
-| Fond principal | Ivoire naturel | `#F7F0E6` |
+| Rôle | Couleur | Code hex | Aperçu |
+|------|---------|----------|---------|
+| Bleu foncé (titres, nav, CTA) | Bleu canard profond | `#2C5F7A` | <span style="display:inline-block;width:14px;height:14px;background:#2C5F7A;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Bleu moyen (liens, accents) | Bleu azur | `#4A8FA8` | <span style="display:inline-block;width:14px;height:14px;background:#4A8FA8;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Bleu clair (fonds, halos) | Ciel pâle | `#A8CBDA` | <span style="display:inline-block;width:14px;height:14px;background:#A8CBDA;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Sable foncé (icônes bois) | Bois chaud | `#8B6B45` | <span style="display:inline-block;width:14px;height:14px;background:#8B6B45;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Sable moyen (bordures, tags) | Sable doré | `#C4986A` | <span style="display:inline-block;width:14px;height:14px;background:#C4986A;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Sable clair (fonds cartes) | Lin | `#E8D5B7` | <span style="display:inline-block;width:14px;height:14px;background:#E8D5B7;border:1px solid #d0d0d0;border-radius:3px;"></span> |
+| Fond principal | Ivoire naturel | `#F7F0E6` | <span style="display:inline-block;width:14px;height:14px;background:#F7F0E6;border:1px solid #d0d0d0;border-radius:3px;"></span> |
 
 **Typographies :**
 - **Playfair Display** — titres, ambiance serif chaleureuse
