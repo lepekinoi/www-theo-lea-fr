@@ -9,19 +9,26 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 - Identité visuelle cohérente (palette, typographies, iconographie).
 - Message métier clair (projet, engagements, valeurs, pré-inscription, contact).
 - Base accessibilité déjà présente (sémantique, labels, focus, responsive).
+- Socle SEO/social désormais en place (Open Graph, Twitter Card, canonical, schema.org, `sitemap.xml`).
 
 ### Points à renforcer
-- Métadonnées sociales/SEO local encore incomplètes (Open Graph, schema.org, sitemap).
 - Une partie du contenu visuel est encore en mode attente (galerie « photos à venir »).
 - Dépendance externe pour l’icône Meeko dans le CTA de pré-inscription.
 - Navigation mobile minimaliste (liens masqués sans menu hamburger accessible).
+- Référencement local à consolider côté diffusion et suivi (indexation, fiche établissement, Search Console).
 
 ### Priorités d’actions proposées
-1. **P0 — Visibilité & conversion** : Open Graph + SEO local + infos pratiques (horaires).
+1. **P0 — Diffusion locale** : vérifier l’indexation du `sitemap.xml`, brancher les outils de suivi SEO et compléter la présence établissement.
 2. **P1 — Crédibilité du projet** : vraies photos (hero + galerie + espace).
 3. **P1 — Robustesse front** : supprimer dépendances médias externes non nécessaires (Meeko favicon local).
 4. **P2 — UX mobile** : menu hamburger accessible.
 5. **P2 — Performance continue** : optimisation images + minification + suivi Lighthouse.
+
+### Dernières évolutions intégrées
+- Ajout des métadonnées **Open Graph** et **Twitter Card** pour le partage social.
+- Ajout du balisage **schema.org** (`ChildCare` / `LocalBusiness`) et du lien canonical.
+- Génération de `sitemap.xml` pour l’indexation.
+- Affichage des **horaires d’ouverture** sur le site : **lundi au vendredi, 7h30 – 18h30**.
 
 > Le détail opérationnel est maintenu dans `ROADMAP.md`.
 
@@ -46,6 +53,7 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 www-theo-lea-fr/
 ├── index.html
 ├── styles.css
+├── sitemap.xml
 ├── assets/
 │   ├── logo.svg
 │   ├── logo.png
@@ -62,8 +70,9 @@ www-theo-lea-fr/
 
 | Métrique | Valeur |
 |----------|--------|
-| Lignes HTML | 366 |
+| Lignes HTML | 438 |
 | Lignes CSS | 915 |
+| Lignes XML | 45 |
 | Dépendances build | 0 |
 | JavaScript applicatif | 0 (hors script inline pour l’année du footer) |
 
@@ -106,4 +115,4 @@ Consulter `ROADMAP.md` pour le plan d’action priorisé (P0/P1/P2).
 
 ---
 
-*Dernière mise à jour : 17 mai 2026*
+*Dernière mise à jour : 17 mai 2026 — documentation réalignée après l’ajout d’Open Graph, schema.org, `sitemap.xml` et des horaires d’ouverture.*
