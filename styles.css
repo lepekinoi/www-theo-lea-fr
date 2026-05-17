@@ -555,25 +555,42 @@ section { padding: var(--section-pad); }
   overflow: hidden;
   aspect-ratio: 4/3;
   background: var(--sand-light);
+  border: 1px solid var(--sand-light);
+  transition: transform 0.2s, box-shadow 0.2s;
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 0.6rem;
-  color: var(--text-light);
-  font-size: 0.85rem;
-  border: 2px dashed var(--orange-mid);
-  transition: border-color 0.2s, background 0.2s;
-  cursor: pointer;
 }
 
 .gallery-item:hover {
-  background: var(--blue-pale);
-  border-color: var(--blue-mid);
-  color: var(--blue-dark);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px rgba(44, 95, 122, 0.14);
 }
 
-.gallery-item span { font-size: 2rem; }
+.gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  flex: 1;
+}
+
+.gallery-item figcaption {
+  padding: 0.7rem 0.9rem;
+  font-size: 0.85rem;
+  color: var(--text-dark);
+  background: var(--white);
+  border-top: 1px solid var(--sand-light);
+}
+
+.gallery-item figcaption span {
+  color: var(--text-light);
+  font-size: 0.78rem;
+}
+
+/* ── Équipe ────────────────────────────────────────────────── */
+.team {
+  background: var(--white);
+  border-top: 1px solid var(--sand-light);
+}
 
 /* ── Valeurs ─────────────────────────────────────────────── */
 .values {

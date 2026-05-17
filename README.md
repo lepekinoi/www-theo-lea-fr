@@ -12,8 +12,7 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 - Socle SEO/social désormais en place (Open Graph, Twitter Card, canonical, schema.org, `sitemap.xml`).
 
 ### Points à renforcer
-- Une partie du contenu visuel est encore en mode attente (galerie « photos à venir »).
-- Dépendance externe pour l’icône Meeko dans le CTA de pré-inscription.
+- Les visuels réels du lieu restent à finaliser (les blocs placeholders ont été remplacés par des visuels provisoires).
 - Navigation mobile minimaliste (liens masqués sans menu hamburger accessible).
 - Référencement local à consolider côté diffusion et suivi (indexation, fiche établissement, Search Console).
 
@@ -29,6 +28,13 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 - Ajout du balisage **schema.org** (`ChildCare` / `LocalBusiness`) et du lien canonical.
 - Génération de `sitemap.xml` pour l’indexation.
 - Affichage des **horaires d’ouverture** sur le site : **lundi au vendredi, 7h30 – 18h30**.
+- Localisation du favicon **Meeko** en asset local (`assets/meeko-favicon.png`).
+- Ajout d’une section **Équipe** courte.
+
+### P0 hors site — suivi opérationnel
+- ✅ `https://theo-lea.fr/sitemap.xml` est publié et accessible.
+- ⚠️ Search Console : fichier de vérification présent dans le repo (`google579dcd3bfd791eff.html`), à vérifier en production.
+- ⏳ Fiche établissement (Google Business Profile) : harmoniser NAP (nom/adresse/téléphone) et relier le site.
 
 > Le détail opérationnel est maintenu dans `ROADMAP.md`.
 
@@ -61,7 +67,8 @@ www-theo-lea-fr/
 │   ├── pissenlit-logo.png
 │   ├── enfants.png
 │   ├── favicon.ico
-│   └── favicon-180.png
+│   ├── favicon-180.png
+│   └── meeko-favicon.png
 ├── README.md
 └── ROADMAP.md
 ```
