@@ -27,7 +27,7 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 - Ajout des métadonnées **Open Graph** et **Twitter Card** pour le partage social.
 - Ajout du balisage **schema.org** (`ChildCare` / `LocalBusiness`) et du lien canonical.
 - Génération de `sitemap.xml` pour l’indexation.
-- Affichage des **horaires d’ouverture** sur le site : **lundi au vendredi, 7h30 – 18h30**.
+- Affichage des **horaires d’ouverture** sur le site : **lundi au vendredi, 7h30 – 18h00**.
 - Localisation du favicon **Meeko** en asset local (`assets/meeko-favicon.png`).
 - Ajout d’une section **Équipe** courte.
 
