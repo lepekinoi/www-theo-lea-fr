@@ -81,11 +81,11 @@ www-theo-lea-fr/
 |---------|----|-------------|
 | Navigation | `nav` | Sticky, liens internes |
 | Hero | `#home` | Logo, pissenlits SVG animés, CTA, badge ouverture |
-| La crèche | `#creche` | Présentation du projet et du lieu |
+| La crèche | `#creche` | Présentation du lieu (12 enfants, de 10 semaines à 3 ans) |
 | Nos engagements | `#engagements` | 6 cartes : nature, bienveillance, rythme, alimentation, créativité, sécurité |
-| Notre projet | `#projet` | Timeline de 2024 à l'ouverture janvier 2027 |
+| Notre projet | `#projet` | Timeline en 5 étapes, de 2016–2019 à l'ouverture en janvier 2027 |
 | Notre futur espace | `#espace` | Galerie placeholder des 6 espaces (photos à venir) |
-| Nos valeurs | `#valeurs` | 4 piliers : nature, bienveillance, éveil global, partenariat |
+| Nos valeurs | `#valeurs` | 4 piliers : nature, bienveillance, lien avec les familles, engagement |
 | Pré-inscription | `#inscription` | Lien Meeko |
 | Contact & Footer | `#contact` | Coordonnées, réseaux sociaux, carte OpenStreetMap |
 

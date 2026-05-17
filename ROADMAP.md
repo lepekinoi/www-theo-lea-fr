@@ -13,7 +13,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [x] Hero avec pissenlits SVG décoratifs animés
 - [x] Section La crèche — présentation du lieu et du projet
 - [x] Section Nos engagements — 6 cartes thématiques
-- [x] Section Le projet — timeline 2024 → janvier 2027
+- [x] Section Le projet — timeline 2016–2019 → janvier 2027
 - [x] Section Notre futur espace — galerie placeholder (6 espaces)
 - [x] Section Nos valeurs — 4 piliers pédagogiques
 - [x] Section Pré-inscription — intégration lien Meeko
@@ -32,11 +32,11 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### 📝 Révision éditoriale
 
-- [ ] **Révision des textes** — Ajustements et reformulations légères sur l'ensemble des sections
-  - Section "La crèche" : vérifier cohérence et ton
+- [x] **Révision des textes** — Ajustements et reformulations légères sur l'ensemble des sections
+  - Section "La crèche" : cohérence et ton validés
   - Section "Nos engagements" : uniformiser les longueurs des 6 cartes
-  - Section "Le projet" : valider la timeline 2024-2027
-  - Section "Nos valeurs" : affiner les descriptions des 4 piliers
+  - Section "Le projet" : timeline 2016-2019 → janvier 2027 validée
+  - Section "Nos valeurs" : descriptions des 4 piliers affinées
 
 ### 📸 Contenu visuel
 
@@ -65,8 +65,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [ ] **Horaires d'ouverture** — Ajouter dans footer ou section dédiée
   - Exemple : "Lundi au vendredi, 7h30 - 18h30"
 
-- [ ] **Capacité & tranche d'âge** — Préciser dans section "La crèche"
-  - Exemple : "12 places pour enfants de 2 mois à 3 ans"
+- [x] **Capacité & tranche d'âge** — Précisé dans la section "La crèche"
+  - Actuel : "12 enfants de 10 semaines à 3 ans"
 
 ### 🔧 Technique
 
@@ -140,4 +140,4 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
-*Dernière mise à jour : 17 mai 2026 — Phase 1 en cours (révision des textes). Architecture v2 statique.*
+*Dernière mise à jour : 17 mai 2026 — Phase 1 en cours (contenu visuel, métadonnées et infos pratiques). Architecture v2 statique.*
