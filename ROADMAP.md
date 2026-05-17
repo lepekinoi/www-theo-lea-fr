@@ -11,12 +11,13 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - Base technique simple et durable (site statique sans build).
 - Positionnement clair et contenu éditorial globalement abouti.
 - Identité visuelle cohérente et responsive déjà en place.
+- Fondations SEO/social désormais posées (Open Graph, Twitter Card, balisage schema.org, `sitemap.xml`, horaires visibles).
 
 ### Ce qui limite l’impact aujourd’hui
-- Partage social et SEO local incomplets (Open Graph, schema, sitemap).
 - Contenu visuel encore partiellement temporaire (« photos à venir »).
 - Dépendance externe évitable sur l’icône Meeko.
 - Expérience mobile perfectible (navigation masquée sans menu dédié).
+- Référencement local encore à diffuser et suivre hors du site (indexation, Search Console, fiche établissement).
 
 ---
 
@@ -24,11 +25,15 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### P0 — À traiter en premier (impact direct acquisition/conversion)
 - [x] Ajouter les balises **Open Graph** + Twitter Card (titre, description, image, URL).
-- [x] Implémenter le **SEO local** minimum viable :
+- [x] Implémenter le **SEO local** minimum viable dans le site :
   - balisage schema.org `ChildCare`/`LocalBusiness`
   - cohérence NAP (nom/adresse/téléphone)
-  - préparation `sitemap.xml`
+  - génération de `sitemap.xml`
 - [x] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
+- [ ] Finaliser la **diffusion locale** hors site :
+  - vérifier l’indexation du `sitemap.xml`
+  - brancher Search Console / outils de suivi
+  - compléter la fiche établissement
 
 ### P1 — Court terme (crédibilité et qualité perçue)
 - [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
@@ -99,8 +104,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### ℹ️ Informations pratiques
 
-- [ ] **Horaires d'ouverture** *(Priorité P0)* — Ajouter dans footer ou section dédiée
-  - Exemple : "Lundi au vendredi, 7h30 - 18h30"
+- [x] **Horaires d'ouverture** *(Priorité P0)* — Ajoutés dans la zone contact
+  - Actuel : "Lundi au vendredi, 7h30 – 18h30"
 
 - [x] **Capacité & tranche d'âge** — Précisé dans la section "La crèche"
   - Actuel : "12 enfants de 10 semaines à 3 ans"
@@ -145,8 +150,9 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [ ] **Optimisation images** *(Priorité P2)* — Format WebP, `loading="lazy"`, `srcset` responsive
 - [ ] **Minification de production** *(Priorité P2)* — Minifier HTML/CSS sur l’environnement de déploiement
 - [ ] **Score Lighthouse ≥ 90** *(Priorité P2)* — Performance, accessibilité, SEO, best practices
-- [x] **SEO local** *(Priorité P0)* — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
+- [x] **SEO local on-site** *(Priorité P0)* — Balises méta complètes + schema.org `LocalBusiness` / `ChildCare`
 - [x] **Sitemap.xml** *(Priorité P0)* — Générer et exposer un sitemap XML pour l’indexation
+- [ ] **Indexation & présence locale** *(Priorité P0)* — Déclarer le site dans les outils externes et suivre la prise en compte du sitemap
 - [ ] **HTTPS** — Certificat SSL actif via hébergeur
 - [ ] **Analytics RGPD-friendly** — Plausible ou Umami (sans cookies)
 - [ ] **Accessibilité renforcée** *(Priorité P2)* — Audit WCAG AA complet
@@ -179,4 +185,4 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
-*Dernière mise à jour : 17 mai 2026 — priorisation ajoutée (P0/P1/P2), Phase 1 en cours. Architecture v2 statique.*
+*Dernière mise à jour : 17 mai 2026 — roadmap réalignée après l’ajout d’Open Graph, schema.org, `sitemap.xml` et des horaires d’ouverture. Architecture v2 statique.*
