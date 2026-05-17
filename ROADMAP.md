@@ -48,7 +48,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### 🎨 Identité & métadonnées
 
-- [ ] **Favicon** — Créer un favicon pissenlit / initiales T&L aux couleurs de la crèche
+- [x] **Favicon** — Créer un favicon pissenlit / initiales T&L aux couleurs de la crèche
   - Formats : `favicon.ico` (16x16, 32x32) + `favicon.png` (180x180 pour Apple)
   - Hébergement : `/assets/favicon.ico` et `/assets/favicon-180.png`
 
