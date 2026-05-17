@@ -401,7 +401,7 @@ section { padding: var(--section-pad); }
 }
 
 .enfants-img {
-  max-width: 320px;
+  max-width: 400px;
   width: 100%;
   opacity: 0.85;
   filter: drop-shadow(0 8px 24px rgba(44, 95, 122, 0.12));
@@ -875,7 +875,7 @@ footer {
 
   .creche-inner { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
   .creche-visual { order: -1; }
-  .enfants-img { max-width: 200px; }
+  .enfants-img { max-width: 240px; }
   .opening-badge { justify-content: center; }
 
   .timeline::before { left: 24px; }
