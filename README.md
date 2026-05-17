@@ -118,12 +118,12 @@ Puis ouvrir `http://localhost:8000`.
 
 Les 6 photos ajoutées dans `assets/` proviennent de **Pexels** (licence gratuite d’utilisation, y compris usage commercial) :
 
-- https://www.pexels.com/photo/group-of-kids-playing-inside-room-3661350/
-- https://www.pexels.com/photo/children-sitting-on-the-table-3184183/
-- https://www.pexels.com/photo/selective-focus-photography-of-sleeping-baby-3657425/
-- https://www.pexels.com/photo/1619311/
-- https://www.pexels.com/photo/girl-in-pink-shirt-reading-book-on-pink-cushion-256401/
-- https://www.pexels.com/photo/child-drawing-on-white-paper-1108099/
+- https://www.pexels.com/photo/3661356/
+- https://www.pexels.com/photo/3184189/
+- https://www.pexels.com/photo/10149159/
+- https://www.pexels.com/photo/1619313/
+- https://www.pexels.com/photo/256403/
+- https://www.pexels.com/photo/1108100/
 
 ---
 
