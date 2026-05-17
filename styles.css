@@ -581,6 +581,11 @@ section { padding: var(--section-pad); }
   border-top: 1px solid var(--sand-light);
 }
 
+.gallery-item figcaption span {
+  color: var(--text-light);
+  font-size: 0.78rem;
+}
+
 /* ── Équipe ────────────────────────────────────────────────── */
 .team {
   background: var(--white);
