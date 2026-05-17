@@ -37,8 +37,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### P1 — Court terme (crédibilité et qualité perçue)
 - [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
-- [ ] Localiser les assets externes non critiques (**favicon Meeko**).
-- [ ] Préparer une section **Équipe** (même version courte) pour renforcer la confiance.
+- [x] Localiser les assets externes non critiques (**favicon Meeko**).
+- [x] Préparer une section **Équipe** (même version courte) pour renforcer la confiance.
 
 ### P2 — Moyen terme (UX et performance continue)
 - [ ] Ajouter un **menu hamburger accessible** (mobile).
