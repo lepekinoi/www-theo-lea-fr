@@ -105,7 +105,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 ### ℹ️ Informations pratiques
 
 - [x] **Horaires d'ouverture** *(Priorité P0)* — Ajoutés dans la zone contact
-  - Actuel : "Lundi au vendredi, 7h30 – 18h30"
+  - Actuel : "Lundi au vendredi, 7h30 – 18h00"
 
 - [x] **Capacité & tranche d'âge** — Précisé dans la section "La crèche"
   - Actuel : "12 enfants de 10 semaines à 3 ans"
