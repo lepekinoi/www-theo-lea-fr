@@ -31,9 +31,9 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
   - génération de `sitemap.xml`
 - [x] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
 - [ ] Finaliser la **diffusion locale** hors site :
-  - vérifier l’indexation du `sitemap.xml`
-  - brancher Search Console / outils de suivi
-  - compléter la fiche établissement
+  - [x] vérifier l’accessibilité du `sitemap.xml`
+  - [ ] brancher Search Console / outils de suivi
+  - [ ] compléter la fiche établissement
 
 ### P1 — Court terme (crédibilité et qualité perçue)
 - [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
@@ -112,9 +112,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### 🔧 Technique
 
-- [ ] **Logo Meeko en local** *(Priorité P1)* — Héberger le favicon Meeko dans `assets/` pour éviter la dépendance externe
-  - Actuellement : lien de pré-inscription vers `theo-lea.meeko.site`, mais icône chargée depuis `meeko.app` (dans `index.html`)
-  - Cible : `/assets/meeko-favicon.png`
+- [x] **Logo Meeko en local** *(Priorité P1)* — Favicon Meeko hébergé en local (`assets/meeko-favicon.png`) dans le CTA de pré-inscription
 
 ---
 
@@ -122,7 +120,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 > Objectif : rendre le site plus vivant et informatif pour les familles
 
-- [ ] **Section Équipe** — Présentation des professionnelles avec photos et parcours
+- [x] **Section Équipe (version courte)** — Bloc éditorial ajouté sur la page d’accueil
 - [ ] **Galerie photos complète** — Photos des espaces intérieurs, extérieurs, activités (avec consentement)
 - [ ] **Menu hamburger mobile** *(Priorité P2)* — Remplacer la nav masquée sur mobile par un menu burger accessible
 - [ ] **Animations d'entrée au scroll** — Apparition douce des sections (`Intersection Observer`)
