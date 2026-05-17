@@ -68,7 +68,13 @@ www-theo-lea-fr/
 │   ├── enfants.png
 │   ├── favicon.ico
 │   ├── favicon-180.png
-│   └── meeko-favicon.png
+│   ├── meeko-favicon.png
+│   ├── espace-salle-jeux.jpg
+│   ├── espace-coin-repas.jpg
+│   ├── espace-repos.jpg
+│   ├── espace-exterieur.jpg
+│   ├── espace-lecture-calme.jpg
+│   └── espace-activite-manuelle.jpg
 ├── README.md
 └── ROADMAP.md
 ```
@@ -107,6 +113,17 @@ Puis ouvrir `http://localhost:8000`.
 - Le design est géré dans `styles.css` (variables CSS dans `:root`).
 - Le site fonctionne sans étape de build.
 - Déploiement compatible GitHub Pages / Netlify / Vercel / Cloudflare Pages.
+
+### 🖼️ Crédits photos (section « Notre futur espace »)
+
+Les 6 photos ajoutées dans `assets/` proviennent de **Pexels** (licence gratuite d’utilisation, y compris usage commercial) :
+
+- https://www.pexels.com/photo/group-of-kids-playing-inside-room-3661350/
+- https://www.pexels.com/photo/children-sitting-on-the-table-3184183/
+- https://www.pexels.com/photo/selective-focus-photography-of-sleeping-baby-3657425/
+- https://www.pexels.com/photo/1619311/
+- https://www.pexels.com/photo/girl-in-pink-shirt-reading-book-on-pink-cushion-256401/
+- https://www.pexels.com/photo/child-drawing-on-white-paper-1108099/
 
 ---
 
