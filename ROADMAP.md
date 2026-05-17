@@ -23,12 +23,12 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 ## 🎯 Priorités d’actions proposées
 
 ### P0 — À traiter en premier (impact direct acquisition/conversion)
-- [ ] Ajouter les balises **Open Graph** + Twitter Card (titre, description, image, URL).
-- [ ] Implémenter le **SEO local** minimum viable :
+- [x] Ajouter les balises **Open Graph** + Twitter Card (titre, description, image, URL).
+- [x] Implémenter le **SEO local** minimum viable :
   - balisage schema.org `ChildCare`/`LocalBusiness`
   - cohérence NAP (nom/adresse/téléphone)
   - préparation `sitemap.xml`
-- [ ] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
+- [x] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
 
 ### P1 — Court terme (crédibilité et qualité perçue)
 - [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
@@ -89,7 +89,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
   - Formats : `favicon.ico` (16x16, 32x32) + `favicon.png` (180x180 pour Apple)
   - Hébergement : `/assets/favicon.ico` et `/assets/favicon-180.png`
 
-- [ ] **Open Graph** *(Priorité P0)* — Métadonnées pour le partage réseaux sociaux
+- [x] **Open Graph** *(Priorité P0)* — Métadonnées pour le partage réseaux sociaux
   ```html
   <meta property="og:title" content="Théo & Léa — Micro-crèche à Notre-Dame-des-Landes">
   <meta property="og:description" content="Ouverture janvier 2027 — Un cocon de douceur...">
@@ -145,8 +145,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [ ] **Optimisation images** *(Priorité P2)* — Format WebP, `loading="lazy"`, `srcset` responsive
 - [ ] **Minification de production** *(Priorité P2)* — Minifier HTML/CSS sur l’environnement de déploiement
 - [ ] **Score Lighthouse ≥ 90** *(Priorité P2)* — Performance, accessibilité, SEO, best practices
-- [ ] **SEO local** *(Priorité P0)* — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
-- [ ] **Sitemap.xml** *(Priorité P0)* — Générer et exposer un sitemap XML pour l’indexation
+- [x] **SEO local** *(Priorité P0)* — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
+- [x] **Sitemap.xml** *(Priorité P0)* — Générer et exposer un sitemap XML pour l’indexation
 - [ ] **HTTPS** — Certificat SSL actif via hébergeur
 - [ ] **Analytics RGPD-friendly** — Plausible ou Umami (sans cookies)
 - [ ] **Accessibilité renforcée** *(Priorité P2)* — Audit WCAG AA complet
