@@ -5,12 +5,49 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
+## 🔎 Analyse synthétique (mai 2026)
+
+### Ce qui est solide
+- Base technique simple et durable (site statique sans build).
+- Positionnement clair et contenu éditorial globalement abouti.
+- Identité visuelle cohérente et responsive déjà en place.
+
+### Ce qui limite l’impact aujourd’hui
+- Partage social et SEO local incomplets (Open Graph, schema, sitemap).
+- Contenu visuel encore partiellement temporaire (« photos à venir »).
+- Dépendance externe évitable sur l’icône Meeko.
+- Expérience mobile perfectible (navigation masquée sans menu dédié).
+
+---
+
+## 🎯 Priorités d’actions proposées
+
+### P0 — À traiter en premier (impact direct acquisition/conversion)
+- [ ] Ajouter les balises **Open Graph** + Twitter Card (titre, description, image, URL).
+- [ ] Implémenter le **SEO local** minimum viable :
+  - balisage schema.org `ChildCare`/`LocalBusiness`
+  - cohérence NAP (nom/adresse/téléphone)
+  - préparation `sitemap.xml`
+- [ ] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
+
+### P1 — Court terme (crédibilité et qualité perçue)
+- [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
+- [ ] Localiser les assets externes non critiques (**favicon Meeko**).
+- [ ] Préparer une section **Équipe** (même version courte) pour renforcer la confiance.
+
+### P2 — Moyen terme (UX et performance continue)
+- [ ] Ajouter un **menu hamburger accessible** (mobile).
+- [ ] Optimiser médias (WebP, `srcset`, lazy-loading ciblé).
+- [ ] Mettre en place un suivi qualité (Lighthouse + vérification accessibilité WCAG AA).
+
+---
+
 ## ✅ Phase 0 — Fondations (terminé)
 
 - [x] Structure HTML5 sémantique
 - [x] Design CSS complet (palette bleu & sable/pissenlit)
 - [x] Navigation sticky responsive
-- [x] Hero avec pissenlits SVG décoratifs animés
+- [x] Hero avec pissenlits décoratifs animés
 - [x] Section La crèche — présentation du lieu et du projet
 - [x] Section Nos engagements — 6 cartes thématiques
 - [x] Section Le projet — timeline 2016–2019 → janvier 2027
@@ -40,7 +77,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### 📸 Contenu visuel
 
-- [ ] **Photos réelles du lieu** — Remplacer l'illustration `enfants.png` et les 6 placeholders de galerie
+- [ ] **Photos réelles du lieu** *(Priorité P1)* — Remplacer l'illustration `enfants.png` et les 6 placeholders de galerie
   - Photo hero (façade ou intérieur accueillant)
   - 6 photos des espaces : salle de jeux, coin repas, espace repos, extérieur, etc.
   - Format : JPG ou PNG, puis conversion WebP (Phase 4)
@@ -52,7 +89,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
   - Formats : `favicon.ico` (16x16, 32x32) + `favicon.png` (180x180 pour Apple)
   - Hébergement : `/assets/favicon.ico` et `/assets/favicon-180.png`
 
-- [ ] **Open Graph** — Métadonnées pour le partage réseaux sociaux
+- [ ] **Open Graph** *(Priorité P0)* — Métadonnées pour le partage réseaux sociaux
   ```html
   <meta property="og:title" content="Théo & Léa — Micro-crèche à Notre-Dame-des-Landes">
   <meta property="og:description" content="Ouverture janvier 2027 — Un cocon de douceur...">
@@ -62,7 +99,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### ℹ️ Informations pratiques
 
-- [ ] **Horaires d'ouverture** — Ajouter dans footer ou section dédiée
+- [ ] **Horaires d'ouverture** *(Priorité P0)* — Ajouter dans footer ou section dédiée
   - Exemple : "Lundi au vendredi, 7h30 - 18h30"
 
 - [x] **Capacité & tranche d'âge** — Précisé dans la section "La crèche"
@@ -70,8 +107,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ### 🔧 Technique
 
-- [ ] **Logo Meeko en local** — Héberger le favicon Meeko dans `assets/` pour éviter la dépendance externe
-  - Actuellement : `https://theo-lea.meeko.site/favicon.ico`
+- [ ] **Logo Meeko en local** *(Priorité P1)* — Héberger le favicon Meeko dans `assets/` pour éviter la dépendance externe
+  - Actuellement : `https://meeko.app/assets/apple-touch-icon-BeUq_aiW.png`
   - Cible : `/assets/meeko-favicon.png`
 
 ---
@@ -82,7 +119,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 - [ ] **Section Équipe** — Présentation des professionnelles avec photos et parcours
 - [ ] **Galerie photos complète** — Photos des espaces intérieurs, extérieurs, activités (avec consentement)
-- [ ] **Menu hamburger mobile** — Remplacer la nav masquée sur mobile par un menu burger accessible
+- [ ] **Menu hamburger mobile** *(Priorité P2)* — Remplacer la nav masquée sur mobile par un menu burger accessible
 - [ ] **Animations d'entrée au scroll** — Apparition douce des sections (`Intersection Observer`)
 - [ ] **Graines de pissenlit volantes** — Animation CSS des graines qui s'envolent (keyframes drift)
 - [ ] **FAQ** — Réponses aux questions fréquentes (tarifs, CAF, horaires, modalités d'accueil)
@@ -105,14 +142,14 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ## 🔒 Phase 4 — Technique & performance (en continu)
 
-- [ ] **Optimisation images** — Format WebP, `loading="lazy"`, `srcset` responsive
-- [ ] **Minification de production** — Minifier HTML/CSS sur l’environnement de déploiement
-- [ ] **Score Lighthouse ≥ 90** — Performance, accessibilité, SEO, best practices
-- [ ] **SEO local** — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
-- [ ] **Sitemap.xml** — Générer et exposer un sitemap XML pour l’indexation
+- [ ] **Optimisation images** *(Priorité P2)* — Format WebP, `loading="lazy"`, `srcset` responsive
+- [ ] **Minification de production** *(Priorité P2)* — Minifier HTML/CSS sur l’environnement de déploiement
+- [ ] **Score Lighthouse ≥ 90** *(Priorité P2)* — Performance, accessibilité, SEO, best practices
+- [ ] **SEO local** *(Priorité P0)* — Balises méta complètes, schema.org `LocalBusiness` / `ChildCare`, Google My Business
+- [ ] **Sitemap.xml** *(Priorité P0)* — Générer et exposer un sitemap XML pour l’indexation
 - [ ] **HTTPS** — Certificat SSL actif via hébergeur
 - [ ] **Analytics RGPD-friendly** — Plausible ou Umami (sans cookies)
-- [ ] **Accessibilité renforcée** — Audit WCAG AA complet
+- [ ] **Accessibilité renforcée** *(Priorité P2)* — Audit WCAG AA complet
 - [ ] **Déploiement automatique** — GitHub Actions ou Netlify/Vercel pour déployer à chaque push
 
 ---
@@ -142,4 +179,4 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
-*Dernière mise à jour : 17 mai 2026 — Phase 1 en cours (contenu visuel, métadonnées et infos pratiques). Architecture v2 statique.*
+*Dernière mise à jour : 17 mai 2026 — priorisation ajoutée (P0/P1/P2), Phase 1 en cours. Architecture v2 statique.*
