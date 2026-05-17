@@ -30,13 +30,49 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 > Objectif : remplacer les placeholders et affiner les textes existants
 
+### 📝 Révision éditoriale
+
 - [ ] **Révision des textes** — Ajustements et reformulations légères sur l'ensemble des sections
-- [ ] **Photos réelles** — Remplacer l'illustration `enfants.png` et les placeholders de galerie par de vraies photos du lieu
+  - Section "La crèche" : vérifier cohérence et ton
+  - Section "Nos engagements" : uniformiser les longueurs des 6 cartes
+  - Section "Le projet" : valider la timeline 2024-2027
+  - Section "Nos valeurs" : affiner les descriptions des 4 piliers
+
+### 📸 Contenu visuel
+
+- [ ] **Photos réelles du lieu** — Remplacer l'illustration `enfants.png` et les 6 placeholders de galerie
+  - Photo hero (façade ou intérieur accueillant)
+  - 6 photos des espaces : salle de jeux, coin repas, espace repos, extérieur, etc.
+  - Format : JPG ou PNG, puis conversion WebP (Phase 4)
+  - Résolution : 1920x1080 pour hero, 800x600 pour galerie
+
+### 🎨 Identité & métadonnées
+
 - [ ] **Favicon** — Créer un favicon pissenlit / initiales T&L aux couleurs de la crèche
-- [ ] **Open Graph** — Métadonnées pour le partage réseaux sociaux (`og:title`, `og:image`, `og:description`)
-- [ ] **Horaires d'ouverture** — Ajouter une section ou une mention des horaires d'accueil
-- [ ] **Capacité & tranche d'âge** — Préciser le nombre de places et les âges accueillis
+  - Formats : `favicon.ico` (16x16, 32x32) + `favicon.png` (180x180 pour Apple)
+  - Hébergement : `/assets/favicon.ico` et `/assets/favicon-180.png`
+
+- [ ] **Open Graph** — Métadonnées pour le partage réseaux sociaux
+  ```html
+  <meta property="og:title" content="Théo & Léa — Micro-crèche à Notre-Dame-des-Landes">
+  <meta property="og:description" content="Ouverture janvier 2027 — Un cocon de douceur...">
+  <meta property="og:image" content="https://theo-lea.fr/assets/og-image.jpg">
+  <meta property="og:url" content="https://theo-lea.fr">
+  ```
+
+### ℹ️ Informations pratiques
+
+- [ ] **Horaires d'ouverture** — Ajouter dans footer ou section dédiée
+  - Exemple : "Lundi au vendredi, 7h30 - 18h30"
+
+- [ ] **Capacité & tranche d'âge** — Préciser dans section "La crèche"
+  - Exemple : "12 places pour enfants de 2 mois à 3 ans"
+
+### 🔧 Technique
+
 - [ ] **Logo Meeko en local** — Héberger le favicon Meeko dans `assets/` pour éviter la dépendance externe
+  - Actuellement : `https://theo-lea.meeko.site/favicon.ico`
+  - Cible : `/assets/meeko-favicon.png`
 
 ---
 
@@ -104,4 +140,4 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
-*Dernière mise à jour : Mai 2026 — Phase 1 en cours (révision des textes). Architecture v2 statique.*
+*Dernière mise à jour : 17 mai 2026 — Phase 1 en cours (révision des textes). Architecture v2 statique.*
