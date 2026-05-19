@@ -13,15 +13,13 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 
 ### Points à renforcer
 - Les visuels réels du lieu restent à finaliser (les blocs placeholders ont été remplacés par des visuels provisoires).
-- Navigation mobile minimaliste (liens masqués sans menu hamburger accessible).
-- Référencement local à consolider côté diffusion et suivi (indexation, fiche établissement, Search Console).
+- Référencement local à consolider côté suivi (indexation, Search Console).
 
 ### Priorités d’actions proposées
-1. **P0 — Diffusion locale** : vérifier l’indexation du `sitemap.xml`, brancher les outils de suivi SEO et compléter la présence établissement.
+1. **P0 — Diffusion locale** : vérifier l’indexation du `sitemap.xml` et brancher les outils de suivi SEO.
 2. **P1 — Crédibilité du projet** : vraies photos (hero + galerie + espace).
 3. **P1 — Robustesse front** : supprimer dépendances médias externes non nécessaires (Meeko favicon local).
-4. **P2 — UX mobile** : menu hamburger accessible.
-5. **P2 — Performance continue** : optimisation images + minification + suivi Lighthouse.
+4. **P2 — Performance continue** : optimisation images + minification + suivi Lighthouse.
 
 ### Dernières évolutions intégrées
 - Ajout des métadonnées **Open Graph** et **Twitter Card** pour le partage social.
@@ -30,11 +28,13 @@ Site vitrine officiel de la micro-crèche **Théo & Léa** (Notre-Dame-des-Lande
 - Affichage des **horaires d’ouverture** sur le site : **lundi au vendredi, 7h30 – 18h00**.
 - Localisation du favicon **Meeko** en asset local (`assets/meeko-favicon.png`).
 - Ajout d’une section **Équipe** courte.
+- Amélioration de l’affichage mobile avec **menu hamburger accessible**.
+- **Recensement Google effectué avec succès** pour la présence locale.
 
 ### P0 hors site — suivi opérationnel
 - ✅ `https://theo-lea.fr/sitemap.xml` est publié et accessible.
-- ⚠️ Search Console : fichier de vérification présent dans le repo (`google579dcd3bfd791eff.html`), à vérifier en production.
-- ⏳ Fiche établissement (Google Business Profile) : harmoniser NAP (nom/adresse/téléphone) et relier le site.
+- ⏳ Search Console : fichier de vérification présent dans le repo (`google579dcd3bfd791eff.html`), à relier au suivi d’indexation si besoin.
+- ✅ Présence Google / recensement local effectué avec succès.
 
 > Le détail opérationnel est maintenu dans `ROADMAP.md`.
 
@@ -139,4 +139,4 @@ Consulter `ROADMAP.md` pour le plan d’action priorisé (P0/P1/P2).
 
 ---
 
-*Dernière mise à jour : 17 mai 2026 — documentation réalignée après l’ajout d’Open Graph, schema.org, `sitemap.xml` et des horaires d’ouverture.*
+*Dernière mise à jour : 19 mai 2026 — documentation réalignée après l’amélioration mobile et la confirmation du recensement Google.*
