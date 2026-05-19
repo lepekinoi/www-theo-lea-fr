@@ -108,7 +108,6 @@ nav {
   border-radius: var(--radius-sm);
   padding: 0.45rem;
   cursor: pointer;
-  gap: 0.25rem;
 }
 
 .nav-toggle-line {
@@ -936,6 +935,7 @@ footer {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 0.25rem;
   }
 
   .nav-links {

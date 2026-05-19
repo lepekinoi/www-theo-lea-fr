@@ -504,6 +504,7 @@
       document.addEventListener('keydown', (event) => {
         if (event.key === 'Escape' && navLinks.classList.contains('nav-links--open')) {
           closeMenu();
+          navToggle.focus();
         }
       });
     }
