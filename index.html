@@ -473,20 +473,38 @@
     const navToggle = document.querySelector('.nav-toggle');
     const navLinks = document.querySelector('.nav-links');
     const navLinkItems = document.querySelectorAll('.nav-links a');
+    const navigation = document.querySelector('nav[aria-label="Navigation principale"]');
 
-    if (navToggle && navLinks) {
+    if (navToggle && navLinks && navigation) {
+      const openLabel = 'Ouvrir le menu de navigation';
+      const closeLabel = 'Fermer le menu de navigation';
+
       const closeMenu = () => {
         navLinks.classList.remove('nav-links--open');
         navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', openLabel);
       };
 
       navToggle.addEventListener('click', () => {
         const isOpen = navLinks.classList.toggle('nav-links--open');
         navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
       });
 
       navLinkItems.forEach((link) => {
         link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', (event) => {
+        if (navLinks.classList.contains('nav-links--open') && !navigation.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+        }
       });
     }
   </script>
