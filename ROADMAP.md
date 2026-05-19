@@ -12,12 +12,12 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - Positionnement clair et contenu éditorial globalement abouti.
 - Identité visuelle cohérente et responsive déjà en place.
 - Fondations SEO/social désormais posées (Open Graph, Twitter Card, balisage schema.org, `sitemap.xml`, horaires visibles).
+- Navigation mobile désormais équipée d’un menu hamburger accessible.
 
 ### Ce qui limite l’impact aujourd’hui
 - Contenu visuel encore partiellement temporaire (« photos à venir »).
 - Dépendance externe évitable sur l’icône Meeko.
-- Expérience mobile perfectible (navigation masquée sans menu dédié).
-- Référencement local encore à diffuser et suivre hors du site (indexation, Search Console, fiche établissement).
+- Référencement local encore à suivre hors du site (indexation, Search Console).
 
 ---
 
@@ -31,9 +31,10 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
   - génération de `sitemap.xml`
 - [x] Ajouter les **horaires d’ouverture** visibles dans la zone contact.
 - [ ] Finaliser la **diffusion locale** hors site :
+  - [x] recensement Google effectué avec succès
   - [x] vérifier l’accessibilité du `sitemap.xml`
   - [ ] brancher Search Console / outils de suivi
-  - [ ] compléter la fiche établissement
+  - [x] compléter la fiche établissement
 
 ### P1 — Court terme (crédibilité et qualité perçue)
 - [ ] Remplacer les visuels temporaires par des **photos réelles** (hero + galerie).
@@ -41,7 +42,6 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [x] Préparer une section **Équipe** (même version courte) pour renforcer la confiance.
 
 ### P2 — Moyen terme (UX et performance continue)
-- [ ] Ajouter un **menu hamburger accessible** (mobile).
 - [ ] Optimiser médias (WebP, `srcset`, lazy-loading ciblé).
 - [ ] Mettre en place un suivi qualité (Lighthouse + vérification accessibilité WCAG AA).
 
@@ -113,6 +113,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 ### 🔧 Technique
 
 - [x] **Logo Meeko en local** *(Priorité P1)* — Favicon Meeko hébergé en local (`assets/meeko-favicon.png`) dans le CTA de pré-inscription
+- [x] **Navigation mobile** *(Priorité P2)* — Menu hamburger accessible intégré pour améliorer la lisibilité et l’accès aux sections sur petit écran
 
 ---
 
@@ -122,7 +123,7 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 - [x] **Section Équipe (version courte)** — Bloc éditorial ajouté sur la page d’accueil
 - [ ] **Galerie photos complète** — Photos des espaces intérieurs, extérieurs, activités (avec consentement)
-- [ ] **Menu hamburger mobile** *(Priorité P2)* — Remplacer la nav masquée sur mobile par un menu burger accessible
+- [x] **Menu hamburger mobile** *(Priorité P2)* — Navigation mobile mise à jour avec un menu burger accessible
 - [ ] **Animations d'entrée au scroll** — Apparition douce des sections (`Intersection Observer`)
 - [ ] **Graines de pissenlit volantes** — Animation CSS des graines qui s'envolent (keyframes drift)
 - [ ] **FAQ** — Réponses aux questions fréquentes (tarifs, CAF, horaires, modalités d'accueil)
@@ -150,7 +151,8 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 - [ ] **Score Lighthouse ≥ 90** *(Priorité P2)* — Performance, accessibilité, SEO, best practices
 - [x] **SEO local on-site** *(Priorité P0)* — Balises méta complètes + schema.org `LocalBusiness` / `ChildCare`
 - [x] **Sitemap.xml** *(Priorité P0)* — Générer et exposer un sitemap XML pour l’indexation
-- [ ] **Indexation & présence locale** *(Priorité P0)* — Déclarer le site dans les outils externes et suivre la prise en compte du sitemap
+- [ ] **Indexation & suivi local** *(Priorité P0)* — Suivre la prise en compte du sitemap dans les outils externes
+- [x] **Présence locale Google** *(Priorité P0)* — Recensement Google effectué avec succès
 - [ ] **HTTPS** — Certificat SSL actif via hébergeur
 - [ ] **Analytics RGPD-friendly** — Plausible ou Umami (sans cookies)
 - [ ] **Accessibilité renforcée** *(Priorité P2)* — Audit WCAG AA complet
@@ -183,4 +185,4 @@ Le site est une **page vitrine statique v2** (HTML + CSS, zéro dépendance) —
 
 ---
 
-*Dernière mise à jour : 17 mai 2026 — roadmap réalignée après l’ajout d’Open Graph, schema.org, `sitemap.xml` et des horaires d’ouverture. Architecture v2 statique.*
+*Dernière mise à jour : 19 mai 2026 — roadmap réalignée après l’amélioration de la navigation mobile et la confirmation du recensement Google. Architecture v2 statique.*
