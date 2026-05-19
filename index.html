@@ -94,11 +94,16 @@
   <!-- ╔══════════════════════════════╗ -->
   <!-- ║  Navigation                  ║ -->
   <!-- ╚══════════════════════════════╝ -->
-  <nav aria-label="Navigation principale">
+  <nav class="main-nav" aria-label="Navigation principale">
     <a href="#home" class="nav-logo-link">
       <img src="assets/logo.png" alt="Théo &amp; Léa Micro-crèche" class="nav-logo-img" />
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="main-nav-links" aria-label="Ouvrir le menu de navigation">
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+      <span class="nav-toggle-line" aria-hidden="true"></span>
+    </button>
+    <ul class="nav-links" id="main-nav-links">
       <li><a href="#creche">🌿 La crèche</a></li>
       <li><a href="#engagements">🤝 Nos engagements</a></li>
       <li><a href="#projet">📋 Le projet</a></li>
@@ -464,6 +469,45 @@
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    const navLinkItems = document.querySelectorAll('.nav-links a');
+    const navigation = document.querySelector('.main-nav');
+
+    if (navToggle && navLinks && navigation) {
+      const openLabel = 'Ouvrir le menu de navigation';
+      const closeLabel = 'Fermer le menu de navigation';
+
+      const closeMenu = () => {
+        navLinks.classList.remove('nav-links--open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.setAttribute('aria-label', openLabel);
+      };
+
+      navToggle.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('nav-links--open');
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        navToggle.setAttribute('aria-label', isOpen ? closeLabel : openLabel);
+      });
+
+      navLinkItems.forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('click', (event) => {
+        if (navLinks.classList.contains('nav-links--open') && !navigation.contains(event.target)) {
+          closeMenu();
+        }
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && navLinks.classList.contains('nav-links--open')) {
+          closeMenu();
+          navToggle.focus();
+        }
+      });
+    }
   </script>
 
 </body>
